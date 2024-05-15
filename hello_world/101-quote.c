@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <string.h>
+#include <unistd.h>
 
 /*
  * main - prints a message to the standard error function using write()
