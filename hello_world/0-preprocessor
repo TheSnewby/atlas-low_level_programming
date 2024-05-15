@@ -1,2 +1,2 @@
 #!/bin/bash
-ssh -E $CFILE > c
+gcc -E $CFILE > c
