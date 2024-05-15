@@ -1,8 +1,6 @@
 #include <stdio.h>
 
-/* Prints a simple phrase using the puts function */
-
-int main(void)
+int main(void) /* Prints a simple phrase using the puts function */
 {
 puts("\"Programming is like building a multilingual puzzle");
 return (0);
