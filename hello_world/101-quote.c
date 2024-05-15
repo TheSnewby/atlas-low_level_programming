@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <string.h>
 
-/* 
+/*
  * main - prints a message to the standard error function using write()
  * @message: the message to be printed
  *
  * Return: 1
  */
 
-int main (void)
+int main(void)
 {
 char message[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
-fwrite(message, sizeof(char), strlen(message), stderr);
+write(2, message, sizeof(char));
 return (1);
 }
