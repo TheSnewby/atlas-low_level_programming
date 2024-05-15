@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <unistd.h>
 
-/*
- * main - prints a message to the standard error function using write()
- * @message: the message to be printed
+/**
+ * main - Prints the size of data types using the sizeof command.
  *
  * Return: 1
  */
