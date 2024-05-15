@@ -15,18 +15,18 @@ int main(void)
 	n = rand() - RAND_MAX / 2;
 	
 	int lastdigit = n % 10;
-	char str;
+	char* str;
 	if (lastdigit > 5)
 	{
-		char str[] = "and is greather than 5\n";
+		str = "and is greather than 5\n";
 	}
 	else if (lastdigit == 0)
 	{
-		char str[] = "and is 0\n";
+		str = "and is 0\n";
 	}
 	else
 	{	
-		char str[] = "and is less than 6 and not 0\n";
+		str = "and is less than 6 and not 0\n";
 	}
 
 	printf("Last digit of %d is %s", n, str);
