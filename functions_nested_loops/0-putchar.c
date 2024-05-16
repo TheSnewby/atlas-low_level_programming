@@ -1,4 +1,4 @@
-#include <unistd.h>
+#include "main.h"
 
 /**
  * main - prints "_putchar \n" without libraries
@@ -8,7 +8,15 @@
 
 int main(void)
 {
-	char str[] = "_putchar\n";
-	write(1, str, sizeof(str));
+	char str[] = "_putchar";
+	int i;
+
+	for (i = 0; i < 8; i++)
+	{
+		_putchar(str[i]);
+	}
+
+	_putchar('\n');
+
 	return (0);
 }
