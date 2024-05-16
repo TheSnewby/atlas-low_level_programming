@@ -3,7 +3,8 @@
 #include <stdio.h>
 
 /**
- * main - prints a conditional string based on the last digit in a randomized variable
+ * main - prints a string based on the last digit 
+ * in a randomized variable
  *
  * Return: 0
  */
