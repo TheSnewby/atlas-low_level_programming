@@ -10,12 +10,13 @@
 int main(void)
 {
 	int n, lastdigit;
+	char* str;
 
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
 	
 	lastdigit = n % 10;
-	char* str;
+
 	if (lastdigit > 5)
 	{
 		str = "and is greather than 5\n";
