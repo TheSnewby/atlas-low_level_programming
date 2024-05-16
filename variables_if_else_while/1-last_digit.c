@@ -10,11 +10,11 @@
 int main(void)
 {
 	int n, lastdigit;
-	char* str;
+	char *str;
 
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
-	
+
 	lastdigit = n % 10;
 
 	if (lastdigit > 5)
@@ -26,7 +26,7 @@ int main(void)
 		str = "and is 0\n";
 	}
 	else
-	{	
+	{
 		str = "and is less than 6 and not 0\n";
 	}
 
