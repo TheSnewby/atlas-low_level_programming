@@ -19,7 +19,7 @@ int main(void)
 
 	if (lastdigit > 5)
 	{
-		str = "and is greather than 5\n";
+		str = "and is greater than 5\n";
 	}
 	else if (lastdigit == 0)
 	{
