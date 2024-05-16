@@ -30,7 +30,7 @@ int main(void)
 		str = "and is less than 6 and not 0\n";
 	}
 
-	printf("Last digit of %d is %s", n, str);
+	printf("Last digit of %d is %d %s", n, lastdigit, str);
 
 	return (0);
 }
