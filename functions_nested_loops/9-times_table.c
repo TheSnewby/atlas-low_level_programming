@@ -12,10 +12,10 @@ void times_table(void)
 
 	for (; i < 10; i++)
 	{
-		for( j = 0; j < 10; j++)
+		for (j = 0; j < 10; j++)
 		{
 			ij = i * j;
-			
+
 			if (j != 0) /* formats delimeters between numbers*/
 			{
 				_putchar(',');
@@ -24,7 +24,7 @@ void times_table(void)
 					_putchar(' ');
 			}
 
-			if (ij /10 % 10 == 0) /*if-else on formatting number output*/
+			if (ij / 10 % 10 == 0) /*if-else on formatting number output*/
 			{
 				_putchar('0' + ij);
 			} else
