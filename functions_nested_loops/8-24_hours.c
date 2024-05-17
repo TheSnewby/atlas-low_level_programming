@@ -3,7 +3,7 @@
 /**
  * jack_bauer - prints time
  *
- * Return: void
+ * Return: voids
  */
 
 void jack_bauer(void)
