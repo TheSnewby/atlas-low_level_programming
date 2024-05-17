@@ -12,19 +12,19 @@ void times_table(void)
 
 	for (; i < 10; i++)
 	{
-		for(j = 0; j < 10; j++)
+		for( j = 0; j < 10; j++)
 		{
 			ij = i * j;
-
-			if( j != 0) /* formats delimeters between numbers*/
-                        {
+			
+			if (j != 0) /* formats delimeters between numbers*/
+			{
 				_putchar(',');
 				_putchar(' ');
-				if( ij / 10 % 10 == 0)
+				if (ij / 10 % 10 == 0)
 					_putchar(' ');
 			}
 
-			if( ij /10 % 10 == 0) /*if-else on formatting number output*/
+			if (ij /10 % 10 == 0) /*if-else on formatting number output*/
 			{
 				_putchar('0' + ij);
 			} else
@@ -33,7 +33,7 @@ void times_table(void)
 				_putchar('0' + (ij % 10));
 			}
 
-			if ( j == 9) /*EOL*/
+			if (j == 9) /*EOL*/
 			{
 				_putchar('\n');
 			}
