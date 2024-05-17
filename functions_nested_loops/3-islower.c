@@ -1,7 +1,8 @@
 #include "main.h"
 
 /**
- * islower - returns 1 if lowercase character
+ * _islower - returns 1 if lowercase character
+ * @c: first operand
  *
  * Return: 1 if true, 0 if false
  */
