@@ -8,8 +8,5 @@
 
 int add(int a, int b)
 {
-	char str[]="hello, world";
-	write(1,str,12);
-
 	return (a+b);
 }
