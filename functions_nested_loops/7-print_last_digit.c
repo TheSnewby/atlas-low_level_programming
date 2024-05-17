@@ -12,7 +12,7 @@ int print_last_digit(int i)
 	int j;
 
 	if (i == -2147483648)
-		return (8);
+		i = 8;
 	if (i < 0)
 		i = -1 * i;
 
