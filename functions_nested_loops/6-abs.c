@@ -9,9 +9,7 @@
 
 int _abs(int i)
 {
-	unsigned int j;
-	
-	j = (unsigned int) i;
+	i = -1 * i;
 
-	return (j);
+	return (i);
 }
