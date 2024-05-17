@@ -10,7 +10,9 @@
 int print_last_digit(int i)
 {
 	int j;
-	
+
+	if (i == INT_MIN)
+		return (8);
 	if (i < 0)
 		i = -1 * i;
 
