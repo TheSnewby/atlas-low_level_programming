@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "main.h"
 
 /**
  * main - prints all unique combo of two digits
@@ -65,8 +66,16 @@ int main(void)
 
 int isinarray(int value; int array[])
 {
-	
+	int n;
+	int swapped = swap(value);
 
+	for(n = 0; n < 500; n++)
+	{
+		if ((value == array[n]) && (swapped == array[n]))
+			return (0);
+	}
+
+	return (1);
 }
 
 /**
