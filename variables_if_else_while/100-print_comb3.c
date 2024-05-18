@@ -11,9 +11,48 @@ int swap(int value);
 
 int main(void)
 {
-	int i;
+	int i, emptyindex = 0;
+	int array[500]; /* tracks all values no longer unique */
+
+	for (i = 1; i < 100; i++)
+	{
+		if (isinarray(i, array) == 1) /* i not in array */
+		{
+			if (i < 10)
+			{
+				array[emptyindex] = i;
+				emptyindex++;
+				array[emptyindex] = i * 10;
+				emptyindex++;
+				if (i == 1)
+				{
+					_putchar('0');
+					_putchar('0' + i);
+				}
+				else
+				{
+					_putchar(',');
+					_putchar(' ');
+					_putchar('0');
+					_putchar('0' + i);
+				}
+			} else
+			{
+				array[emptyindex] = i;
+				emptyindex++;
+				array[emptyindex] = swap(i);
+				emptyindex++;
+
+				_putchar(',');
+				_putchar(' ');
+				_putchar('0' + i / 10);
+				_putchar('0' + i % 10);
+			}
+		}
 
 
+	}
+	return (0);
 }
 
 /**
