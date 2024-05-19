@@ -13,16 +13,18 @@ int main(void)
 	int i; 
 	long current;
 
-	printf("%ld\n", minustwo);
-	printf("%ld\n", minusone);
+	printf("%ld", minustwo);
+	printf(", %ld", minusone);
 
 	for (i = 3; i <= 50; i++)
 	{
 		current = minustwo + minusone;
-		printf("%ld\n",current);
+		printf(", %ld",current);
 		minustwo = minusone;
 		minusone = current;
 	}
+
+	printf("\n");
 
 	return(0);
 }
