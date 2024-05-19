@@ -10,7 +10,7 @@ int main(void)
 {
 	long minustwo = 1;
 	long minusone = 2;
-	int i; 
+	int i;
 	long current;
 
 	printf("%ld", minustwo);
@@ -19,12 +19,12 @@ int main(void)
 	for (i = 3; i <= 50; i++)
 	{
 		current = minustwo + minusone;
-		printf(", %ld",current);
+		printf(", %ld", current);
 		minustwo = minusone;
 		minusone = current;
 	}
 
 	printf("\n");
 
-	return(0);
+	return (0);
 }
