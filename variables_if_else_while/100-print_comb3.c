@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /**
  * main - prints all unique combo of two digits
@@ -11,7 +12,8 @@ int main(void)
 	int i, j,  emptyindex, inarray = 0; /* inarray = 0 if not in array */
 	int tens, ones, swap; 
 	int arraylength = 200;
-	int array[arraylength]; /* tracks all values no longer unique */
+	int array[200]; /* tracks all values no longer unique */
+	memset(array, 0, sizeof(array));
 
 	for (i = 0; i < 100; i++)
 	{
