@@ -50,8 +50,8 @@ int main(void)
 
 			if (i != 0)
 			{
-				_putchar(",");
-				_putchar(" ");
+				_putchar(',');
+				_putchar(' ');
 			}
 
 			_putchar('0' + tens);
@@ -61,7 +61,7 @@ int main(void)
 		inarray = 0;
 	}
 
-	_putchar("\n");
+	_putchar('\n');
 
 	return (0);
 }
