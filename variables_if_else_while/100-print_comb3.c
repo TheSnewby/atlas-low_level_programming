@@ -16,7 +16,6 @@ int main(void)
 	int tens, ones, swap; 
 	int arraylength = 200;
 	int array[200]; /* tracks all values no longer unique */
-	memset(array, 0, sizeof(array));
 
 	for (i = 0; i < 100; i++)
 	{
