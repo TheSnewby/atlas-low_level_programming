@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include "_putchar.c"
 
 /**
  * main - prints all unique combo of two digits
@@ -8,27 +9,31 @@
  * Return: 0
  */
 
-int _putchar(char c);
-
 int main(void)
 {
 	int i, j,  emptyindex, inarray = 0; /* inarray = 0 if not in array */
 	int tens, ones, swap; 
 	int arraylength = 200;
-	int array[200]; /* tracks all values no longer unique */
+	int array[200] = {0}; /* tracks all values no longer unique */
 
 	for (i = 0; i < 100; i++)
 	{
 		swap = (i % 10 * 10) + (i / 10);
-		
-		for (j = 0; j <= arraylength; j++)
+
+		if ((i / 10) == (i % 10))
+			inarray = 1;
+
+		for (j = 0; j <= arraylength && inarray == 0; j++)
 		{
 			if (i == array[j] || swap == array[j])
 				inarray = 1;
 		}
 
 		if (inarray == 1)
+		{
+			inarray = 0;
 			continue;
+		}
 		else
 		{
 			if (i < 10)
@@ -47,7 +52,7 @@ int main(void)
 			array[emptyindex] = swap;
 			emptyindex++;
 
-			if (i != 0)
+			if (i > 1)
 			{
 				_putchar(',');
 				_putchar(' ');
@@ -56,23 +61,9 @@ int main(void)
 			_putchar('0' + tens);
 			_putchar('0' + ones);
 		}
-
-		inarray = 0;
 	}
 
 	_putchar('\n');
 
 	return (0);
-}
-
-/**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
 }
