@@ -13,8 +13,8 @@ int main(void)
 {
 	int i, j,  emptyindex, inarray = 0; /* inarray = 0 if not in array */
 	int tens, ones, swap; 
-	int arraylength = 200;
-	int array[200] = {0}; /* tracks all values no longer unique */
+	int arraylength = 300;
+	int array[300] = {0}; /* tracks all values no longer unique */
 
 	for (i = 0; i < 100; i++)
 	{
