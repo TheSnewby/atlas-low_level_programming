@@ -46,7 +46,7 @@ int main(void)
 				tens = i / 10;
 				ones = i % 10;
 			}
-			
+
 			array[emptyindex] = i;
 			emptyindex++;
 			array[emptyindex] = swap;
