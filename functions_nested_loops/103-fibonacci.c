@@ -24,4 +24,5 @@ int main(void)
 	}
 
 	printf("%d\n", evensum);
+	return(0);
 }
