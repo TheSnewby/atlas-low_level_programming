@@ -8,12 +8,12 @@
 
 int main(void)
 {
-	unsigned long minustwo = 1;
-	unsigned long minusone = 2;
-	unsigned long current;
+	unsigned long long minustwo = 1;
+	unsigned long long minusone = 2;
+	unsigned long long current;
 	int i;
 
-	printf("%lu, %lu", minustwo, minusone);
+	printf("%llu, %llu", minustwo, minusone);
 
 	for (i = 3; i <= 98; i++)
 	{
@@ -21,7 +21,7 @@ int main(void)
 		minustwo = minusone;
 		minusone = current;
 
-		printf(", %lu", current);
+		printf(", %llu", current);
 	}
 	printf("\n");
 
