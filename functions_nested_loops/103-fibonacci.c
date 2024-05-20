@@ -6,7 +6,7 @@
  * Return: 0
  */
 
-int main (void)
+int main(void)
 {
 	int minustwo = 1;
 	int minusone = 2;
