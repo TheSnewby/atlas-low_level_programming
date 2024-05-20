@@ -2,7 +2,7 @@
 #include <unistd.h>
 
 /**
- * times_table - prints a formated n times table
+ * print_times_table - prints a formated n times table
  * @n: param
  *
  * Return: void
