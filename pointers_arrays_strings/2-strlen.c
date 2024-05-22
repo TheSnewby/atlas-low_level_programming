@@ -2,7 +2,7 @@
  * _strlen - returns the length of a string
  * s: c string?
  *
- * Return: int 
+ * Return: int
  */
 
 int _strlen(char *s)
@@ -11,7 +11,7 @@ int _strlen(char *s)
 	int index;
 
 	for (index = 0; s[index] != '\0'; index++)
-		count++;	
+		count++;
 
 	return (count);
 }
