@@ -1,6 +1,6 @@
 /**
  * _strlen - returns the length of a string
- * s: c string?
+ * @s: c string?
  *
  * Return: int
  */
