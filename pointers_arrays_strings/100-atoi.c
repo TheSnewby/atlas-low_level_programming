@@ -30,6 +30,7 @@ int _atoi(char *s)
 			{
 				if (sign < 0)
 					num = -2147483648;
+			}
 			else
 				num = num * 10 + (s[i] - '0');
 		}
