@@ -15,7 +15,7 @@ void rev_string(char *s)
 	for (i = 0; s[i] != '\0'; i++)
 		length++;
 
-	char *s_copy[length];
+	char s_copy[length];
 
 	for (i = 0; i < length; i++)
 		s_copy[i] = s[i];
