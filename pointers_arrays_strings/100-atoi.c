@@ -26,7 +26,7 @@ int _atoi(char *s)
 			found++; /* found is true */
 			if (found == 1)
 				num = s[i] - '0';
-			else if (num == 214748364 && s[i] == 8)
+			else if (num == 214748364 && s[i] == 8) /* test case for intMax+1 being negative */
 			{
 				if (sign < 0)
 					num = -2147483648;
@@ -41,7 +41,7 @@ int _atoi(char *s)
 				       final_number = 1;
 			}
 	}
-	if (sign < 0) 
+	if (sign < 0)
 		num = num * -1;
 	return (num);
 }
