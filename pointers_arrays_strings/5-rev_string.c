@@ -20,7 +20,7 @@ void rev_string(char *s)
 	/* char s_copy[length];
 	for (i = 0; i < length; i++)
 		s_copy[i] = s[i]; */
-	for (i = 0; i < length; i++)
+	for (i = 0; i < length / 2; i++)
 	{
 		swap = s[i];
 		s[i] = s_copy[length - i - 1];
