@@ -14,7 +14,6 @@ int _atoi(char *s)
 	int final_number = 0; /* boolean for being finished with number */
 	int sign = 0; /* tracks pos and neg */
 	int num = 0; /* returned number */
-	//keep track of sign, find first number, find non number after number found
 
 	for (i = 0; s[i] != '\0' && final_number == 0; i++)
 	{
@@ -25,7 +24,6 @@ int _atoi(char *s)
 		else if (s[i] >= '0' && s[i] <= '9')
 		{
 			found++; /* found is true */
-			//write code to track numbers
 			if (found == 1)
 				num = s[i] - '0';
 			else
@@ -35,7 +33,7 @@ int _atoi(char *s)
 			if (found > 0)
 			{
 			       if (s[i] < '0' || s[i] > '9')
-				       final_numbers = 1;
+				       final_number = 1;
 			}
 	}
 	if (sign < 0) 
