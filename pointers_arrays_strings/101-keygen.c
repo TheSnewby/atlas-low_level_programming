@@ -8,12 +8,11 @@
  * Return: 0
  */
 
-int main(void)
+int main(int i)
 {
-	int i;
 
 	srand(time(0));
 	i = rand() - RAND_MAX / 2;
 
-	return (0);
+	return (i);
 }
