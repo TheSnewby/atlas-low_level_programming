@@ -17,10 +17,8 @@ int _atoi(char *s)
 
 	for (i = 0; s[i] != '\0' && final_number == 0; i++)
 	{
-		if (s[i] == '+')
-			sign++;
-		else if (s[i] == '-')
-			sign--;
+		if (s[i] == '-')
+			sign = sign * -1;
 		else if (s[i] >= '0' && s[i] <= '9')
 		{
 			found++; /* found is true */
@@ -41,7 +39,7 @@ int _atoi(char *s)
 				       final_number = 1;
 			}
 	}
-	if (sign < 0)
-		num = num * -1;
+	num = num * sign;
+
 	return (num);
 }
