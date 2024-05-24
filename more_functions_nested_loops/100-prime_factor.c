@@ -23,15 +23,16 @@ int main(void)
 			if (n % j == 0)
 			{
 				isprime = 1;
-				break;
+				if (j <= maxprime)
+					break;
 			}
 		}
 		if (isprime == 1)
 			maxprime = j;
-		isprime = 1;
+		isprime = 0;
 	}
 	if (maxprime == 0)
 		maxprime = n;
-	printf("%ld", maxprime);
+	printf("%ld\n", maxprime);
 	return (0);
 }
