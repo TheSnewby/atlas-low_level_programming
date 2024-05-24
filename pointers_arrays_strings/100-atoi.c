@@ -24,7 +24,7 @@ int _atoi(char *s)
 			found++; /* found is true */
 			if (found == 1)
 				num = s[i] - '0';
-			else if ((num == 214748364 && s[i] == 8)
+			else if ((num == 214748364 && s[i] == 8))
 			{
 				if (sign < 0)
 					return (-2147483648);
