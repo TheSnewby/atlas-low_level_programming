@@ -8,8 +8,9 @@
  * Return: 0
  */
 
-int main(int i)
+int keygen(void)
 {
+	int i;
 
 	srand(time(0));
 	i = rand() - RAND_MAX / 2;
