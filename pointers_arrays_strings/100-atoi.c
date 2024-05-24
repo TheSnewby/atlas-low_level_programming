@@ -27,7 +27,7 @@ int _atoi(char *s)
 			else if (num == 214748364 && s[i] == 8) /* test case for intMax+1 being negative */
 			{
 				if (sign < 0)
-					num = -2147483648;
+					return (-2147483648);
 			}
 			else
 				num = num * 10 + (s[i] - '0');
