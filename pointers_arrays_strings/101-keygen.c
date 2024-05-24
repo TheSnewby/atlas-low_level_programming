@@ -13,6 +13,7 @@ int keygen(void)
 
 	srand(time(0));
 	i = rand() - RAND_MAX / 2;
+	printf("%d", i);
 
 	return (i);
 }
