@@ -12,7 +12,7 @@ int _atoi(char *s)
 	int i; /* iterator */
 	int found = 0; /* boolean for whether number is found */
 	int final_number = 0; /* boolean for being finished with number */
-	int sign = 0; /* tracks pos and neg */
+	int sign = 1; /* tracks pos and neg */
 	int num = 0; /* returned number */
 
 	for (i = 0; s[i] != '\0' && final_number == 0; i++)
