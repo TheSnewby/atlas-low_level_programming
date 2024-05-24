@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _atoi - converts a string to an integer following almost indecipherable instructions
+ * _atoi - converts a string to an integer following instructions
  * @s: string
  *
  * Return: int
@@ -33,11 +33,13 @@ int _atoi(char *s)
 				num = num * 10 + (s[i] - '0');
 		}
 		else
+		{
 			if (found > 0)
 			{
-			       if (s[i] < '0' || s[i] > '9')
+				if (s[i] < '0' || s[i] > '9')
 				       final_number = 1;
 			}
+		}
 	}
 	num = num * sign;
 
