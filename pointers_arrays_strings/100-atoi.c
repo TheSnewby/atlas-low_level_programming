@@ -36,7 +36,7 @@ int _atoi(char *s)
 		{
 			if (found > 0)
 			{
-				if (s[i] < '0' || s[i] > '9')
+				if ((s[i] < '0') || (s[i] > '9'))
 				       final_number = 1;
 			}
 		}
