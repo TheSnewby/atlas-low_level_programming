@@ -33,4 +33,5 @@ int main(void)
 	if (maxprime == 0)
 		maxprime = n;
 	printf("%ld", maxprime);
+	return (0);
 }
