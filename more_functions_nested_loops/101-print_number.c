@@ -1,4 +1,5 @@
 #include <limits.h>
+#include "_putchar.c"
 
 /**
  * print_number - prints an integer
