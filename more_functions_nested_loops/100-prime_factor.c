@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdio.h>
+#include <math.h>
 
 /**
  * main - prints largest prime factor of a number
@@ -13,18 +14,21 @@ int main(void)
 	long n = 612852475143;
 	long maxprime = 0;
 	int isprime = 0; /* boolean, 0 false, 1 true */
+	long nprime = (long)sqrt(n);
 
-	for (i = 2; i < (n / 2 + 1); i++)
+	if (nprime % 2 != 0)
+		nprime--;
+
+	for (i = nprime; i > 2; i -= 2)
 	{
-		if (n == 2)
-			maxprime = 2;
-		for (j = 2; j < i; j++)
+		if (i % 2 == 0 || i % 3 == 0)
+			continue;
+		for (j = 5; j < nprime; j += 6)
 		{
-			if (n % j == 0)
+			if (n % j == 0 || n % (j + 2) == 0)
 			{
 				isprime = 1;
-				if (j <= maxprime)
-					break;
+				break;
 			}
 		}
 		if (isprime == 1)
