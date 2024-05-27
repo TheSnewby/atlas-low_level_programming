@@ -23,7 +23,8 @@ int main(void)
 	{
 		if (i % 2 == 0 || i % 3 == 0) /* most likely divisors */
 			continue;
-		for (j = 5; j < primemax; j += 6) /* all other primes above 3 */
+		printf("current i is: %lu\n", i);
+		for (j = 5; j <= primemax; j += 6) /* all other primes above 3 */
 		{
 			if (n % j == 0 || n % (j + 2) == 0) 
 			{
@@ -34,8 +35,6 @@ int main(void)
 		if (isprime == 1)
 			maxprime = j;
 	}
-	if (maxprime == 0)
-		maxprime = n;
 	printf("%ld\n", maxprime);
 	return (0);
 }
