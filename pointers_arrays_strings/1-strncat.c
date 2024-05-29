@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * strncat - concatenates two string up to a point
+ * _strncat - concatenates two string up to a point
  * @dest: target string to be added to
  * @src: string to be added
  * @n: up to number of bytes used in src
