@@ -20,21 +20,21 @@ char* keygen(int size)
 	srand(time(0));
 	/* upper case */
 	passwordIndex = rand() % size;
-	password[passwordIndex] = (char)((rand() % 26) + 65);
+	*password[passwordIndex] = (char)((rand() % 26) + 65);
 	usedIndices[usedIndex] = passwordIndex;
 	usedIndex++;
 
 	/* lower case */
 	do {passwordIndex = rand() % size;}
-	while(password[passwordIndex] != -1);
-	password[passwordIndex] = (char)((rand() % 26) + 97);
+	while(*password[passwordIndex] != -1);
+	*password[passwordIndex] = (char)((rand() % 26) + 97);
 	usedIndices[usedIndex] = passwordIndex;
 	usedIndex++;
 
 	/* special character */
 	do {passwordIndex = rand() % size;}
-	while(password[passwordIndex] != -1);
-	password[passwordIndex] = (char)((rand() % 26) + 97);
+	while(*password[passwordIndex] != -1);
+	*password[passwordIndex] = (char)((rand() % 26) + 97);
 	usedIndices[usedIndex] = passwordIndex;
 	usedIndex++;
 
@@ -42,13 +42,13 @@ char* keygen(int size)
 	for(i = 3; i < size; i++)
 	{
 		do {passwordIndex = rand() % size;}
-		while(password[passwordIndex] != -1);
-		password[passwordIndex] = (char)((rand() % 5) + 33);
+		while(*password[passwordIndex] != -1);
+		*password[passwordIndex] = (char)((rand() % 5) + 33);
 		usedIndices[usedIndex] = passwordIndex;
 		usedIndex++;
 	}
 
-	return (password);
+	return (*password);
 }
 
 int main(void)
