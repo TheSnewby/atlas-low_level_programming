@@ -21,7 +21,11 @@ int _strcmp(char *s1, char *s2)
 			s1end = 0;
 		if (s2[i] == '\0')
 			s2end = 0;
-		diff += s1[i] - s2[i];
+		if (s1[i] != s2[i])
+		{
+			diff += s1[i] - s2[i];
+			break;
+		}
 	}
 
 	return (diff);

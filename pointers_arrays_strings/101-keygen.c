@@ -8,7 +8,7 @@
  * Return: 0
  */
 
-char* keygen(int size)
+char* keygen(const int size)
 {
 	char c;
 	int passwordIndex; /* set to negative for default */
@@ -53,7 +53,7 @@ char* keygen(int size)
 
 int main(void)
 {
-	int size = 8; /* assume 8 characters */
+	const int size = 8; /* assume 8 characters */
 	char *password = keygen(size);
 	printf("generated password: %s", *password);
 	return (0);
