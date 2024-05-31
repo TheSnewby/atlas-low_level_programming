@@ -14,7 +14,7 @@ char *_strstr(char *haystack, char *needle)
 	int needle_length = 0;
 
 	if (!needle[0]) /* empty string case */
-		return (NULL);
+		return (haystack);
 
 	for (i = 0; needle[i] != '\0'; i++) /* length of needle */
 		needle_length++;
