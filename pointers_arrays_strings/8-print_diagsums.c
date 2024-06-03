@@ -1,5 +1,4 @@
 #include "main.h"
-#include <math.h>
 
 /**
  * print_diagsums - prints the sum of the two diags of a square matrix
@@ -14,7 +13,10 @@ void print_diagsums(int *a, int size)
 	int i;
 	int sumLtoR = 0;
 	int sumRtoL = 0;
-	int m = sqrt(size);
+	int m = 0;
+
+	while (m * m < size)
+		m++;
 
 	for (i = 0; i < m; i++)
 	{
