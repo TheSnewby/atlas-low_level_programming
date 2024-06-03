@@ -3,7 +3,7 @@
 /**
  * print_diagsums - prints the sum of the two diags of a square matrix
  * @a: square matrix
- * @size: size of matrix
+ * @size: size of matrix as sizexsize
  *
  * Return: void
 */
@@ -13,19 +13,15 @@ void print_diagsums(int *a, int size)
 	int i;
 	int sumLtoR = 0;
 	int sumRtoL = 0;
-	int m = 0;
 
-	while (m * m < size)
-		m++;
-
-	for (i = 0; i < m; i++)
+	for (i = 0; i < size; i++)
 	{
-		sumLtoR += a[i * (m + 1)];
+		sumLtoR += a[i * (size + 1)];
 	}
 
-	for (i = 1; i <= m; i++)
+	for (i = 1; i <= size; i++)
 	{
-		sumRtoL += a[i * (m - 1)];
+		sumRtoL += a[i * (size - 1)];
 	}
-	printf("%d, %d", sumLtoR, sumRtoL);
+	printf("%d, %d\n", sumLtoR, sumRtoL);
 }
