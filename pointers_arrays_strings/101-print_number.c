@@ -11,7 +11,6 @@
 void print_number(int n)
 {
 	int ismin = 0;
-	int isneg = 0;
 
 	if (n == INT_MIN)
 	{
@@ -22,7 +21,6 @@ void print_number(int n)
 	if (n < 0)
 	{
 		n *= -1;
-		isneg = 1;
 		_putchar('-');
 	}
 
