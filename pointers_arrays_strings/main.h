@@ -31,6 +31,9 @@ char *_strpbrk(char*,char*);
 char *_strstr(char*, char*);
 void print_chessboard(char (*a)[8]);
 void print_diagsums(int*, int);
-
+char *rot13(char *);
+void print_number(int n);
+char *infinite_add(char *, char *, char *, int);
+void print_buffer(char*, int);
 
 #endif
