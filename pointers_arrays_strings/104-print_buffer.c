@@ -3,7 +3,7 @@
 /**
  * print_buffer - prints a buffer
  * @b: buffer
- * @size: number of bytes of buffer
+ * @size: buffer length to be printed
  *
  * Return: void
 */
@@ -14,7 +14,7 @@ void print_buffer(char *b, int size)
 
     if (size <= 0) /* 0 size case */
     	printf("\n");
-    for (i = 0; b[i] != '\0'; i += 10)
+    for (i = 0; i < size; i += 10)
     {
 		printf("%08x: ", (unsigned int)(&b[i] - &b[0])); 
 
@@ -24,7 +24,7 @@ void print_buffer(char *b, int size)
     	}
     	for (j = 0; j < 10; j++)
     	{
-			if (b[i + j] > 31 || b[i + j] < 127)
+			if ((b[i + j]) > 31 && (b[i + j]) < 127)
 				printf("%c", b[i + j]);
 			else
 				printf(".");
