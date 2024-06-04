@@ -16,7 +16,7 @@ void print_buffer(char *b, int size)
     	printf("\n");
     for (i = 0; b[i] != '\0'; i += 10)
     {
-		printf("%08x: ", (&b[i] - &b[0])); 
+		printf("%08x: ", (unsigned int)(&b[i] - &b[0])); 
 
     	for (j = 0; j < 10; j += 2)
     	{
