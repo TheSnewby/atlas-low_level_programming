@@ -9,10 +9,10 @@
 
 int _strlen_recursion(char *s)
 {
-	static int sum = 1;
+	static int sum = 1; /* betty doesn't want 0 */
 
 	if (*s == '\0')
-		return (sum);
+		return (sum - 1);
 	sum++;
-	_strlen_recursion(s + 1);
+	return(_strlen_recursion(s + 1));
 }
