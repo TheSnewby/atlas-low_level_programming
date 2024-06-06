@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 		return (1);
 	}
 
-	i = (int)(argv[1]) * (int)(argv[2]);
+	i = *argv[1] * *argv[2];
 
 	printf("%d\n", i);
 
