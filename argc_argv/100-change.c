@@ -43,6 +43,12 @@ int main(int argc, char *argv[])
 			cents -= 5;
 		}
 
+		while (cents >= 2)
+		{
+			coin_count += 1;
+			cents -= 2;
+		}
+
 		while (cents >= 1)
 		{
 			coin_count += 1;
