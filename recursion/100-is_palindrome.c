@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * is_palindrome_helper - recursively check a string for being a palindrome
  * @s: string
@@ -6,9 +7,6 @@
  *
  * Return: 1 if palindrome, otherwise 0
  */
-
-int is_palindrome_helper(char *s, int size);
-int is_palindrome(char *s);
 
 int is_palindrome_helper(char *s, int size)
 {
