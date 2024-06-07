@@ -15,7 +15,6 @@ int is_palindrome_helper(char *s, int size)
 		(void)(s);
 		return (1);
 	}
-
 	else
 	{
 		if (s[0] == s[size - 1])
@@ -42,9 +41,7 @@ int is_palindrome(char *s)
 		size++;
 		i++;
 	}
-
 	if (size == 0)
 		return (1);
-
 	return (is_palindrome_helper(s, size));
 }
