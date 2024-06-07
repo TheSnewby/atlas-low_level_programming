@@ -14,7 +14,7 @@ int _sqrt_recursion_helper(int i, int value)
 		return (i);
 	else if (i > value / 2)
 		return (-1);
-	return(_sqrt_recursion_helper(i + 1, value));
+	return (_sqrt_recursion_helper(i + 1, value));
 }
 
 /**
