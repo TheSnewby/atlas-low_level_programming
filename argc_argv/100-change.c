@@ -11,9 +11,8 @@ void quaters(int *centsptr, int *countptr)
 {
 	while (*centsptr >= 25)
 	{
-		countptr += 1;
+		*countptr += 1;
 		*centsptr -= 25;
-		printf("reduced by 25\n");
 	}
 }
 
