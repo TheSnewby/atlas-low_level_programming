@@ -11,9 +11,9 @@
 int is_prime_number_helper(int i, int n)
 {
 	if (n % (i - 1) == 0 || n % (i + 1) == 0)
-		return (1);
-	else if (i > (n / 2))
 		return (0);
+	else if (i > (n / 2))
+		return (1);
 	return (is_prime_number_helper(i + 6, n));
 }
 
