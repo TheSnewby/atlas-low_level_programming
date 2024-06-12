@@ -2,7 +2,7 @@
 
 /**
  * create_array - create an array of chars init with spec char
- * @size: size of array - 1
+ * @size: size of array
  * @c: specific char to be initialized
  *
  * Return: pointer to array, otherwase NULL
@@ -13,6 +13,8 @@ char *create_array(unsigned int size, char c)
 	unsigned int i = 0;
 	char *array = malloc(sizeof(char) * size + 1);
 
+	if (size < 1)
+		return (NULL);
 	if (sizeof(array) == 0)
 		return (NULL);
 	while (i < size)
