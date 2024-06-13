@@ -2,9 +2,9 @@
 
 /**
  * string_nconcat - concats two strings in a new memory alloc
- * s1: first string
- * s2: second string
- * n: number of bytes of second string
+ * @s1: first string
+ * @s2: second string
+ * @n: number of bytes of second string
  *
  * Return: pointer
  */
@@ -15,9 +15,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	unsigned int s2_size = 0;
 	unsigned int i, j;
 	char *s = NULL;
-
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
 
 	for (i = 0; s1[i] != '\0'; i++)
 		s1_size++;
