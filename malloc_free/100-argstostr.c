@@ -45,7 +45,7 @@ char *argstostr(int ac, char **av)
 	str[k] = '\0';
 	return (str);
 }
-
+/*
 int main(int ac, char *av[])
 {
     char *s;
@@ -58,4 +58,4 @@ int main(int ac, char *av[])
     printf("%s", s);
     free(s);
     return (0);
-}
+} */
