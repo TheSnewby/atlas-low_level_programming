@@ -14,7 +14,7 @@ char **strtow(char *str)
 	int space_num = 0;
 	/* int *sizes = NULL; */
 
-	if (str == NULL || str == "")
+	if (str == NULL || *str == "")
 		return (NULL);
 
 	for (i = 0; str[i] != '\0'; i++)
