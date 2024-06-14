@@ -9,10 +9,10 @@
 
 char **strtow(char *str)
 {
-	int i, j, k;
-	char *words[] = NULL;
+	int i;
+	char **words = NULL;
 	int space_num = 0;
-	int *sizes = NULL;
+	/* int *sizes = NULL; */
 
 	if (str == NULL || str == "")
 		return (NULL);
@@ -20,5 +20,5 @@ char **strtow(char *str)
 	for (i = 0; str[i] != '\0'; i++)
 		if (str[i] == ' ')
 			space_num++;
-	return (NULL);
+	return (words);
 }
