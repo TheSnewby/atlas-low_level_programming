@@ -25,7 +25,7 @@ char *argstostr(int ac, char **av)
 		}
 	}
 
-	str = malloc(sizeof(char) * (size + ac));
+	str = malloc(sizeof(char) * (size + ac + 1));
 	if (str == NULL)
 		return (NULL);
 
@@ -36,13 +36,26 @@ char *argstostr(int ac, char **av)
 			str[k] = av[i][j];
 			k++;
 		}
-		if (i != ac - 1)
-		{
-			str[k] = '\n';
-			k++;
-		}
+
+		str[k] = '\n';
+		k++;
+
 	}
 
 	str[k] = '\0';
 	return (str);
+}
+
+int main(int ac, char *av[])
+{
+    char *s;
+
+    s = argstostr(ac, av);
+    if (s == NULL)
+    {
+        return (1);
+    }
+    printf("%s", s);
+    free(s);
+    return (0);
 }
