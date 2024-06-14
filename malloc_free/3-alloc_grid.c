@@ -29,13 +29,13 @@ int **alloc_grid(int width, int height)
 	}
 
 	if (failed != 0)
+	{
+		for (row = 0; row < height; row++)
 		{
-			for (row = 0; row < height; row++)
-				{
-					free(grid[row]);
-				}
-			free(grid);
+			free(grid[row]);
 		}
+		free(grid);
+	}
 
 	for (column = 0; column < width; column++)
 		for (row = 0; row < height; row++)
