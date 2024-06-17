@@ -15,6 +15,6 @@ int mul(int num1, int **num2)
 		return (98);
 	}
 
-	printf("%d\n", num[0] * num[1]);
+	printf("%d\n", *num2[0] * *num2[1]);
 	return (0);
 }
