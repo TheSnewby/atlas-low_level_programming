@@ -15,6 +15,9 @@ char *mulLarge(char *n1, char *n2)
 	int i, j, prod, swap;
 	char *product = malloc(n1_size + n2_size);
 
+	if (product == NULL)
+		return (0);
+
 	for (i = n1_size - 1; i >= 0; i--)
 	{
 		for (j = n2_size - 1; j >= 0; j--)
@@ -68,6 +71,8 @@ int isDigit(char *num)
 
 int main(int num1, char **num2)
 {
+	char *product = NULL;
+
 	if (sizeof(num2) != 2) /* consider added num1 != 2*/
 	{
 		printf("Error\n");
@@ -87,8 +92,11 @@ int main(int num1, char **num2)
 	}
 	else
 	{
-		printf("%s\n", mulLarge(num2[0], num2[1]));
+		product = mulLarge(num2[0], num2[1]);
+		printf("%s\n", product);
+		free(product);
 	}
+
 
 	return (0);
 }
