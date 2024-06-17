@@ -11,7 +11,7 @@ int isDigit(char *num)
 	int i;
 
 	for (i = 0; num[i] != '\0'; i++)
-		if (num[i] < 48 || num[i] > 57)
+		if (num[i] < 48 && num[i] > 57)
 			return (-1);
 	return (0);
 }
