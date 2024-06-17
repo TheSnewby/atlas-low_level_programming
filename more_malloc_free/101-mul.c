@@ -61,7 +61,7 @@ int main(int num1, char **num2)
 	if (sizeof(num2) != 2) /* consider added num1 != 2*/
 	{
 		printf("Error\n");
-		return (98);
+		/* return (98); */
 	}
 	(void)(num1); /* unused var */
 	if (isDigit(num2[0]) != 0 || isDigit(num2[1]) != 0)
