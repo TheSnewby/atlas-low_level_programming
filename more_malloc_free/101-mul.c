@@ -32,7 +32,7 @@ int main(int num1, char **num2)
 		printf("Error\n");
 		return (98);
 	}
-
+	(void)(num1);
 	if (isDigit(num2[0]) != 0 || isDigit(num2[1]) != 0)
 	{
 		printf("Error\n");
