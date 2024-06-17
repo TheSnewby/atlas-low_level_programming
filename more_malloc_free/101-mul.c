@@ -11,7 +11,7 @@ int isDigit(char *num)
 	int i;
 
 	for (i = 0; num[i] != '\0'; i++)
-		if (num[i] < 48 && num[i] > 57)
+		if (num[i] < 48 || num[i] > 57)
 			return (-1);
 	return (0);
 }
@@ -32,7 +32,7 @@ int main(int num1, char **num2)
 		return (98);
 	}
 
-	if (isDigit(num2[0]) != 0 ||isDigit(num2[1]) != 0)
+	if (isDigit(num2[0]) != 0 || isDigit(num2[1]) != 0)
 	{
 		printf("Error\n");
 		return (98);
