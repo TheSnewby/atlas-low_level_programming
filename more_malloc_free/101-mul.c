@@ -1,13 +1,13 @@
 #include "main.h"
 /**
- * mul - multiplies two numbers passed as arguments
+ * main - multiplies two numbers passed as arguments
  * num1 - num of arguments
  * num2 - ** of arguments
  *
  * Return: 0 if succesful, 98 otherwise
  */
 
-int mul(int num1, int **num2)
+int main(int num1, int **num2)
 {
 	if (num1 != 2)
 	{
