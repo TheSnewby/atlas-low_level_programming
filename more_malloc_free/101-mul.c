@@ -27,15 +27,15 @@ int isDigit(char *num)
 
 int main(int num1, char **num2)
 {
-	if (num1 != 2)
+	if (num1 != 2 || sizeof(num2) != 2)
 	{
-		printf("Error 1\n");
+		printf("Error\n");
 		return (98);
 	}
 
 	if (isDigit(num2[0]) != 0 || isDigit(num2[1]) != 0)
 	{
-		printf("Error 2\n");
+		printf("Error\n");
 		return (98);
 	}
 
