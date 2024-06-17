@@ -50,7 +50,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
  * main - check the code
  *
  * Return: Always 0.
- */
+ 
 int main(void)
 {
     char *concat;
@@ -59,4 +59,4 @@ int main(void)
     printf("%s\n", concat);
     free(concat);
     return (0);
-}
+} */
