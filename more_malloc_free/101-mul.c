@@ -15,6 +15,6 @@ int main(int num1, char **num2)
 		return (98);
 	}
 
-	printf("%d\n", atoi(num2[0]) * atoi(num2[1]));
+	printf("%lld\n", (long long)(atoi(num2[0])) * (long long)(atoi(num2[1])));
 	return (0);
 }
