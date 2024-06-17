@@ -27,7 +27,7 @@ int isDigit(char *num)
 
 int main(int num1, char **num2)
 {
-	if (num1 != 2 || sizeof(num2) != 2)
+	if (sizeof(num2) != 2)
 	{
 		printf("Error\n");
 		return (98);
