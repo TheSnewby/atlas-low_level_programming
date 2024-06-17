@@ -2,6 +2,37 @@
 #include <string.h>
 
 /**
+ * mulLarge - multiplies large numbers
+ * @n1: 1st string of nums
+ * @n2: 2nd string of nums
+ *
+ * Return: product
+ */
+char *mulLarge(char *n1, char *n2)
+{
+	int n1_size = strlen(n1);
+	int n2_size = strlen(n2);
+	int i, j, prod, swap;
+	char *product = malloc(n1_size + n2_size);
+
+	for (i = n1_size - 1; i >= 0; i--)
+	{
+		for (j = n2_size - 1; j >= 0; j--)
+		{
+			prod = (n1[i] - '0') * (n2[j] - '0');
+			swap = product[i + j + 1] + prod;
+			product[i + j + 1] = swap % 10;
+			product[i + j] += swap / 10;
+		}
+	}
+
+	for (i = 0; i < n1_size + n2_size; i++) /* convert back to ascii */
+		product += '0';
+
+	return (product);
+}
+
+/**
  * isDigit - checks whether a string of any size is a number
  * @num: the string
  *
@@ -27,12 +58,12 @@ int isDigit(char *num)
 
 int main(int num1, char **num2)
 {
-	if (sizeof(num2) != 2)
+	if (sizeof(num2) != 2) /* consider added num1 != 2*/
 	{
 		printf("Error\n");
 		return (98);
 	}
-	(void)(num1);
+	(void)(num1); /* unused var */
 	if (isDigit(num2[0]) != 0 || isDigit(num2[1]) != 0)
 	{
 		printf("Error\n");
