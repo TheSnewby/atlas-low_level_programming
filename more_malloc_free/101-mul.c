@@ -40,8 +40,10 @@ int main(int num1, char **num2)
 	}
 
 	if (sizeof(num2[0]) <= sizeof(long int))
+	{
 		if (sizeof(num2[1]) <= sizeof(long int)) /* two lines for betty */
 			printf("%ld\n", atol(num2[0]) * atol(num2[1]));
+	}
 	else
 		printf("need a bigger boat\n");
 
