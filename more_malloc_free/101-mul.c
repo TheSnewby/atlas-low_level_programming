@@ -17,19 +17,19 @@ char *mulLarge(char *n1, char *n2)
 
 	if (product == NULL)
 		return (0);
-
+	/* need to add the null byte at the end somehow */
 	for (i = n1_size - 1; i >= 0; i--)
 	{
 		for (j = n2_size - 1; j >= 0; j--)
 		{
 			prod = (n1[i] - '0') * (n2[j] - '0');
 			swap = product[i + j + 1] + prod;
-			product[i + j + 1] = swap % 10;
+			product[i + j + 1] = swap % 10; /* int vs char math */
 			product[i + j] += swap / 10;
 		}
 	}
 
-	for (i = 0; i < n1_size + n2_size; i++) /* convert back to ascii */
+	for (i = 0; i < n1_size + n2_size; i++) /* converts back to ascii */
 		product += '0';
 
 	if (*product == '0')
@@ -94,9 +94,8 @@ int main(int num1, char **num2)
 	{
 		product = mulLarge(num2[0], num2[1]);
 		printf("%s\n", product);
-		free(product);
+		free(product); /* doesn't free the original if ++ occurred */
 	}
-
 
 	return (0);
 }
