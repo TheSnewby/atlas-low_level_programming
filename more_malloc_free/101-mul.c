@@ -29,6 +29,16 @@ char *mulLarge(char *n1, char *n2)
 	for (i = 0; i < n1_size + n2_size; i++) /* convert back to ascii */
 		product += '0';
 
+	if (*product == '0')
+	{
+		for (i = 0; i < n1_size + n2_size; i++)
+			if (*product == '0')
+				product++;
+	}
+
+	if (*product == '\0')
+		return ("0");
+
 	return (product);
 }
 
@@ -61,7 +71,7 @@ int main(int num1, char **num2)
 	if (sizeof(num2) != 2) /* consider added num1 != 2*/
 	{
 		printf("Error\n");
-		/* return (98); */
+		return (98);
 	}
 	(void)(num1); /* unused var */
 	if (isDigit(num2[0]) != 0 || isDigit(num2[1]) != 0)
