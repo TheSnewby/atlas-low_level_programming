@@ -40,7 +40,7 @@ char *mulLarge(char *n1, char *n2)
 	}
 
 	if (*product == '\0')
-		return ("0");
+		return (product--);
 
 	return (product);
 }
