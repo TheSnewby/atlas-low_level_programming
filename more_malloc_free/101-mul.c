@@ -76,7 +76,9 @@ int main(int num1, char **num2)
 			printf("%ld\n", atol(num2[0]) * atol(num2[1]));
 	}
 	else
-		printf("need a bigger boat\n");
+	{
+		printf("%s\n", mulLarge(num2[0], num2[1]));
+	}
 
 	return (0);
 }
