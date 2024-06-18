@@ -1,5 +1,8 @@
 #ifndef dog_h
 #define dog_h
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 
 /**
  * struct dog - dog struct
