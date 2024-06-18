@@ -33,6 +33,9 @@ dog_t *new_dog(char *name, float age, char *owner)
 	ptr_newdog->age = age;
 	ptr_newdog->name = malloc(size_name);
 	ptr_newdog->owner = malloc(size_owner);
+	name_copy = malloc(size_name);
+	owner_copy = malloc(size_owner);
+
 	if ((*ptr_newdog).name == NULL || (*ptr_newdog).owner == NULL)
 	{
 		free((*ptr_newdog).name);
