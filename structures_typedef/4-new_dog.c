@@ -21,10 +21,10 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	for (i = 0; name[i] != '\0'; i++)
 		;
-	size_name = i;
+	size_name = i + 1;
 	for (i = 0; owner[i] != '\0'; i++)
 		;
-	size_owner = i;
+	size_owner = i + 1;
 	ptr_newdog->age = age;
 	ptr_newdog->name = malloc(size_name);
 	ptr_newdog->owner = malloc(size_owner);
