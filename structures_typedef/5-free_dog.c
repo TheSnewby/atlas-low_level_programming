@@ -9,8 +9,11 @@
 void free_dog(dog_t *d)
 {
 	if (d == NULL)
-		return (NULL);
-	free((*d).name);
-	free((*d).owner);
-	free(d);
+		printf("0\n");
+	else
+	{
+		((*d).name);
+		free((*d).owner);
+		free(d);
+	}
 }
