@@ -12,7 +12,7 @@ void free_dog(dog_t *d)
 		printf("0\n");
 	else
 	{
-		((*d).name);
+		free((*d).name);
 		free((*d).owner);
 		free(d);
 	}
