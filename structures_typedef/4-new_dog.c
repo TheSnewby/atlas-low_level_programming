@@ -26,10 +26,10 @@ dog_t *new_dog(char *name, float age, char *owner)
 		;
 	size_owner = i;
 	ptr_newdog->age = age;
-	ptr_newdog->name = malloc(size_name);
-	ptr_newdog->owner = malloc(size_owner);
-	name_copy = malloc(size_name);
-	owner_copy = malloc(size_owner);
+	ptr_newdog->name = malloc(size_name + 1);
+	ptr_newdog->owner = malloc(size_owner + 1);
+	name_copy = malloc(size_name + 1);
+	owner_copy = malloc(size_owner + 1);
 	if ((*ptr_newdog).name == NULL || (*ptr_newdog).owner == NULL)
 	{
 		free((*ptr_newdog).name);
