@@ -30,11 +30,11 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		printf("Error\n99\n");
+		printf("Error\n");
 		exit(99);
 	}
 
 	/* consider if-thens for bad returns */
-	printf("Error\n100\n");
+	printf("Error\n");
 	exit(100);
 	}
