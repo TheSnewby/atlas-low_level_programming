@@ -1,24 +1,5 @@
 #include "3-calc.h"
 
-
-/**
- * is_digit - checks if all characters in a string a digits
- * @s: string
- *
- * return: 0 if true, otherwise -1
- */
-int is_digit(char *s)
-{
-	int i, size;
-
-	for (i = 0; s[i] != '\0'; i++)
-		;
-	size = i;
-	for (i = 0; i < size; i++)
-		if (s[i] < 48 || s[i] > 57)
-			return (-1);
-	return (0);
-}
 /**
  * main - accepts inputs and calls functions 
  * @argc: argc
@@ -31,8 +12,7 @@ int main(int argc, char **argv)
 	int num1, num2;
 	int output;
 
-	if (argc < 4 || argc > 4 || 
-	is_digit(argv[1]) == -1 || is_digit(argv[3]) == -1)
+	if (argc < 4 || argc > 4)
 		return (98);
 
 	num1 = atoi(argv[1]);
