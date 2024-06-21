@@ -19,7 +19,15 @@ int (*get_op_func(char *s))(int a, int b)
         {"%", op_mod},
         {NULL, NULL}
     };
-    /* int i;  ? */
+    int i;
 
-	return (ops[s[0]](a, b));
+	for (i = 0; i < 6; i++)
+	{
+		if (*s == ops[i].op[0])
+		{
+			return ops[i].f;
+		}
+	}
+
+	return (NULL);
 }

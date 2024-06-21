@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 	int num1, num2;
 	int output;
 
-	if (argc < 3 || argc > 3 || 
+	if (argc < 4 || argc > 4 || 
 	is_digit(argv[1]) == -1 || is_digit(argv[3]) == -1)
 		return (98);
 
@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 	|| argv[2][0] == '*'|| argv[2][0] == '/' || argv[2][0] == '%')
 	{
 		output = get_op_func(argv[2])(num1, num2);
-		printf("%d", output);
+		printf("%d\n", output);
 		return (0);
 	}
 	else
@@ -52,5 +52,6 @@ int main(int argc, char **argv)
 	}
 
 	/* consider if-thens for bad returns */
+	printf("100\n");
 	return (100);
 	}
