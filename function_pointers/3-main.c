@@ -13,7 +13,10 @@ int main(int argc, char **argv)
 	int output;
 
 	if (argc < 4 || argc > 4)
+	{
+		printf("Error\n");
 		return (98);
+	}
 
 	num1 = atoi(argv[1]);
 	num2 = atoi(argv[3]);
@@ -32,6 +35,6 @@ int main(int argc, char **argv)
 	}
 
 	/* consider if-thens for bad returns */
-	printf("100\n");
+	printf("Error\n100\n");
 	return (100);
 	}
