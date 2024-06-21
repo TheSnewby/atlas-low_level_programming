@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 	argv[2][0] == '*' || argv[2][0] == '/' || argv[2][0] == '%'))
 	{
 		output = get_op_func(argv[2])(num1, num2);
-		printf("%d\n", output);
+		printf("%d paradiddle\n", output);
 		return (0);
 	}
 	else
