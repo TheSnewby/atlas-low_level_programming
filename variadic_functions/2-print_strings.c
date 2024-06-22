@@ -15,6 +15,11 @@ void print_strings(const char *separator, const unsigned int n, ...)
 
 	va_start(strings, n);
 	/* print first arg if str not null */
+	if (n <= 0)
+	{
+		printf("\n");
+		exit(0);
+	}
 	str = va_arg(strings, char*);
 	if (str == NULL)
 		printf("(nil)");
