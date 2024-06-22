@@ -1,5 +1,4 @@
 #include "variadic_functions.h"
-
 /**
  * print_all - print all arguments of certain type
  * @format: passed list of types of arguments
@@ -16,8 +15,7 @@ void print_all(const char * const format, ...)
 	va_start(text, format);
 	while (format != NULL && format[i] != '\0')
 	{
-		if ((va_count > 0) && (format[i] == 'c' || format[i] == 'i'
-		|| format[i] == 'f' || format[i] == 's'))
+		if ((va_count > 0) && (format[i] == 'c' || format[i] == 'i' || format[i] == 'f' || format[i] == 's'))
 			printf(", ");
 		switch (format[i])
 		{
@@ -39,7 +37,7 @@ void print_all(const char * const format, ...)
 				if (str == NULL)
 				{
 					printf("(nil)");
-					continue;
+					break;
 				}
 				printf("%s", str);
 				break;
