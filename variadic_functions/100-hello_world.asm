@@ -15,3 +15,5 @@ _start: ; starts the ... start?
 	; rsi & rdx do not need to be changed as exit(rdi) only requires one parameter
 	; i'm curious if rsi & rdx's values can carry over in a file's next rax that requires 3 parameters.
 	syscall ; executes exit
+
+	; doesn't compile unless you add -nostartfiles flag to gcc
