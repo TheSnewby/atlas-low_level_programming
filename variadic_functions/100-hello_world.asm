@@ -1,6 +1,6 @@
 ; semi-colon comments code
 section .data ; section for constants
-	howdy db 'Hello, World\n', 0 ; declares bytes of string to str with null term
+	howdy db 'Hello, World', 0xA ; declares bytes of string to str with
 
 section .text
 	global _start ; start of code
