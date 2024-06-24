@@ -2,7 +2,7 @@
 	.text
 	.section	.rodata
 .LC0:
-	.string	"Hello, World"
+	.string	"Hello, World\n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -15,7 +15,7 @@ main:
 	.cfi_offset 6, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
-	movl	$12, %edx
+	movl	$13, %edx
 	leaq	.LC0(%rip), %rax
 	movq	%rax, %rsi
 	movl	$1, %edi
