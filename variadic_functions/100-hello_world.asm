@@ -1,19 +1,47 @@
-; semi-colon comments code
-section .data ; section for constants
-	howdy db 'Hello, World', 0xA ; declares bytes of string to str with
-
-section .text
-	global _start ; start of code
-_start: ; starts the ... start?
-	mov rax, 1 ; copies 1 to rax. 1 is system call to write(output, buffer, buff_length). rax is io registry
-	mov rdi, 1 ; 1st param. copies 1 to rdi. File descriptor of the standard file streams - stdin, stdout and stderr are 0, 1 and 2, respectively
-	mov rsi, howdy ; 2nd param. copies the desired string to 2nd parameter
-	mov rdx, 13 ; 3rd param. buffer buff_length
-	syscall ; executes rax
-	mov rax, 60 ; ends syscall with exit function
-	mov rdi, 0 ; sets value of rdi to 0 to declare exit status a success
-	; rsi & rdx do not need to be changed as exit(rdi) only requires one parameter
-	; i'm curious if rsi & rdx's values can carry over in a file's next rax that requires 3 parameters.
-	syscall ; executes exit
-
-	; doesn't compile unless you add -nostartfiles flag to gcc
+	.file	"100-hello_world.c"
+	.text
+	.section	.rodata
+.LC0:
+	.string	"Hello, World\n"
+	.text
+	.globl	main
+	.type	main, @function
+main:
+.LFB0:
+	.cfi_startproc
+	endbr64
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	movl	$13, %edx
+	leaq	.LC0(%rip), %rax
+	movq	%rax, %rsi
+	movl	$1, %edi
+	call	write@PLT
+	movl	$0, %eax
+	popq	%rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE0:
+	.size	main, .-main
+	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.section	.note.GNU-stack,"",@progbits
+	.section	.note.gnu.property,"a"
+	.align 8
+	.long	1f - 0f
+	.long	4f - 1f
+	.long	5
+0:
+	.string	"GNU"
+1:
+	.align 8
+	.long	0xc0000002
+	.long	3f - 2f
+2:
+	.long	0x3
+3:
+	.align 8
+4:
