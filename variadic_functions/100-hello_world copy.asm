@@ -3,8 +3,8 @@ section .data ; section for constants
 	howdy db 'Hello, World', 0xA ; declares bytes of string to str with
 
 section .text
-	global _start ; start of code
-_start: ; starts the ... start?
+	global main ; start of code
+main: ; starts the ... start?
 	mov rax, 1 ; copies 1 to rax. 1 is system call to write(output, buffer, buff_length). rax is io registry
 	mov rdi, 1 ; 1st param. copies 1 to rdi. File descriptor of the standard file streams - stdin, stdout and stderr are 0, 1 and 2, respectively
 	mov rsi, howdy ; 2nd param. copies the desired string to 2nd parameter
