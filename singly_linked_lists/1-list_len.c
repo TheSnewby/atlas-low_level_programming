@@ -14,4 +14,5 @@ size_t list_len(const list_t *h)
 	{
 		count++; /* is it this simple? */
 	}
+	return (count);
 }
