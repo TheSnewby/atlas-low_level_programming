@@ -1,4 +1,4 @@
-#include "list.h"
+#include "lists.h"
 
 /**
  * print_listint - prints all elements of a listint_t list
@@ -9,7 +9,7 @@
 
 size_t print_listint(const listint_t *h)
 {
-	listint_t temp = h;
+	listint_t *temp = h;
 	size_t count = 0;
 
 	while (temp != NULL)
@@ -19,6 +19,5 @@ size_t print_listint(const listint_t *h)
 		count++;
 	}
 
-	free(temp);
 	return (count);
 }
