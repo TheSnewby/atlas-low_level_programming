@@ -31,7 +31,7 @@ int get_bit(unsigned long int n, unsigned int index)
 {
 	int i;
 	char found = 'n';
-	int found_index;
+	int found_index = 0;
 
 	if (n == 0)
 		return (0);
@@ -44,7 +44,7 @@ int get_bit(unsigned long int n, unsigned int index)
 			break;
 		}
 	}
-	if (index > found_index)
+	if ((int)index > found_index)
 		return (-1);
 	else if (found == 'y' && n & (1UL << index))
 		return (1);
