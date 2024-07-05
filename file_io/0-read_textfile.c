@@ -24,11 +24,19 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 
 	read_return = read(fd, buf, letters);
+	/* printf("read reaturn is: %d\n", read_return); */
 	if (read_return != (int)letters)
+	{
+		close(fd);
 		return (0);
-	write_return = write(1, buf, letters);
+	}
+	write_return = write(1, buf, letters); /* STDOUT_FILENO */
 	if (write_return != (int)letters)
+	{
+		/* printf("write return is: %d\n", write_return); */
+		close(fd);
 		return (0);
+	}
 	close(fd);
 	return (letters);
 }
