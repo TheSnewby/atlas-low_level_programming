@@ -31,19 +31,17 @@ int get_bit(unsigned long int n, unsigned int index)
 {
 	int i;
 	char found = 'n';
-	int found_index = INT_MAX;
 	int pmax = 64;
 
 	if ((int)index > pmax)
 		return (-1);
 	if (n == 0)
 		return (0);
-	for (i = 63; i >= 0; i--)
+	for (i = pmax - 1; i >= 0; i--)
 	{
 		if (n & (1UL << i))
 		{
 			found = 'y';
-			found_index = i;
 			break;
 		}
 	}
