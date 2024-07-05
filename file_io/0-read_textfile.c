@@ -40,3 +40,4 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	close(fd);
 	return (write_return);
 }
+/* note: read only returns 0 at EOF if called at EOF */
