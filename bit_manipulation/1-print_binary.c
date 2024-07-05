@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * prints the binary representation of a number
+ * print_binary - prints the binary representation of a number
  * @n: unsigned long int to be printed
  *
  * Return: void
@@ -29,7 +29,4 @@ void print_binary(unsigned long int n)
 				putchar('0');
 		}
 	}
-	/* find what 2^p add up to equal it? can't use a malloc though */
-	/* consider a LIFO linked list (added at head) of chars */
-	/* linked lists require malloc, which isn't allowed here */
 }
