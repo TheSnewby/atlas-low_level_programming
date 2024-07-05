@@ -24,15 +24,18 @@ int _pow(int x, int y)
  * @n: unsigned long value
  * @index: target bit index in n
  *
- * Return: value at bit or -1 if error
+ * Return: value at bit or -1 if index out of range
  */
 
 int get_bit(unsigned long int n, unsigned int index)
 {
 	int i;
 	char found = 'n';
-	int found_index = 65;
+	int found_index = INT_MAX;
+	int pmax = 64;
 
+	if ((int)index > pmax)
+		return (-1);
 	if (n == 0)
 		return (0);
 	for (i = 63; i >= 0; i--)
@@ -44,9 +47,7 @@ int get_bit(unsigned long int n, unsigned int index)
 			break;
 		}
 	}
-	if ((int)index > found_index)
-		return (-1);
-	else if (found == 'y' && n & (1UL << index))
+	if (found == 'y' && n & (1UL << index))
 		return (1);
 	else
 		return (0);
