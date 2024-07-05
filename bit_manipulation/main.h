@@ -1,6 +1,7 @@
 #ifndef main_h
 #define main_h
 #include <stdio.h>
+#include <limits.h>
 
 unsigned int binary_to_uint(const char *);
 void print_binary(unsigned long int);
