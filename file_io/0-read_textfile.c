@@ -30,7 +30,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		close(fd);
 		return (0);
 	}
-	write_return = write(1, buf, read_return); /* STDOUT_FILENO */
+	write_return = write(STDOUT_FILENO, buf, read_return); /* STDOUT_FILENO */
 	if (write_return != read_return)
 	{
 		/* printf("write return is: %d\n", write_return); */
