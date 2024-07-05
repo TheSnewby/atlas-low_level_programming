@@ -12,23 +12,9 @@ int clear_bit(unsigned long int *n, unsigned int index)
 {
 	if (index > 63)
 		return (-1);
-	/* flips the mask from 0010000 to 1101111*/
+	/* ~ flips the mask from 0010000 to 1101111*/
+	/* & is the only bit operator that changes all to 0 with 0 */
 	*n = *n & ~(1 << index);
 
 	return (1);
-}
-int main(void)
-{
-    unsigned long int n;
-
-    n = 1024;
-    clear_bit(&n, 10);
-    printf("%lu\n", n);
-    n = 0;
-    clear_bit(&n, 10);
-    printf("%lu\n", n);
-    n = 98;
-    clear_bit(&n, 1);
-    printf("%lu\n", n);
-    return (0);
 }
