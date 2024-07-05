@@ -24,14 +24,14 @@ int _pow(int x, int y)
  * @n: unsigned long value
  * @index: target bit index in n
  *
- * Return: value at bit or -1 if error 
+ * Return: value at bit or -1 if error
  */
 
 int get_bit(unsigned long int n, unsigned int index)
 {
 	int i;
 	char found = 'n';
-	int found_index = 0;
+	int found_index = 65;
 
 	if (n == 0)
 		return (0);
