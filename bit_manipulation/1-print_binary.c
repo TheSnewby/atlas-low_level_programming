@@ -9,7 +9,7 @@
 
 void print_binary(unsigned long int n)
 {
-	int pmax = 64; /* assume ul max is 2^32 -1 for now */
+	int pmax = 64; /* assume ul max is 2^64 -1 for now */
 	int i;
 	char c = 'n'; /* flag to find beginning */
 
@@ -19,7 +19,7 @@ void print_binary(unsigned long int n)
 	{
 		for (i = pmax; i >= 0; i--)
 		{
-			if (n & (1 << i))
+			if (n & (1UL << i))
 			{
 				putchar('1');
 				if (c == 'n')
