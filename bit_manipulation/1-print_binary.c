@@ -17,7 +17,7 @@ void print_binary(unsigned long int n)
 		putchar('0');
 	else
 	{
-		for (i = pmax; i >= 0; i--)
+		for (i = pmax - 1; i >= 0; i--)
 		{
 			if (n & (1UL << i))
 			{
