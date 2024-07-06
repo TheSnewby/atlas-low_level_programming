@@ -30,9 +30,11 @@ int create_file(const char *filename, char *text_content)
 	{
 		text_content_size++;
 	}
-	fd = open(filename, O_WRONLY | O_TRUNC);
-	if (fd < 0)
-		fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0600);
+
+	/* sources do not agree on how 0600 is applied to already existing files */
+	fd = open(filename, O_WRONLY | O_TRUNC); /* looks for already existing file */
+	if (fd < 0) /* if does not exist */
+		fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0600); /* create it */
 	if (fd < 0)
 		return (-1);
 	write_return = write(fd, text_content, text_content_size);
