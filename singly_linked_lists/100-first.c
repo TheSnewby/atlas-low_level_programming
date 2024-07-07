@@ -9,5 +9,7 @@ void startupPrint (void) __attribute__ ((constructor));
 
 void startupPrint(void)
 {
-	printf("You're beat! and yet, you must allow,\nI bore my house upon my back!\n");
+	char *first = "You're beat! and yet, you must allow,\n";
+	char *second = "I bore my house upon my back!\n";
+	printf("%s%s", first, second);
 }
