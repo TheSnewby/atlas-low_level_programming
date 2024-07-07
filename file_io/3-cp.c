@@ -20,7 +20,11 @@ void cp_exit(int fd_from, int fd_to, int error_no, char *name)
 		exit(97);
 	}
 	else if (error_no == 98)
+	{
 		dprintf(2, "Error: Can't read from file %s\n", name);
+		if (fd_to == 0)
+			exit(98);
+	}
 	else if (error_no == 99)
 		dprintf(2, "Error: Can't write to %s\n", name);
 
@@ -65,7 +69,6 @@ int main(int argc, char *argv[])
 	int write_return;
 	char *file_from;
 	char *file_to;
-	int close_return;
 	char buf[1024];
 
 	if (argc != 3)
@@ -76,7 +79,7 @@ int main(int argc, char *argv[])
 
 	fd_from = open(file_from, O_RDONLY);
 	if (fd_from < 0)
-		cp_exit(fd_from, fd_to, 98, file_from);
+		cp_exit(fd_from, 0, 98, file_from);
 	fd_to = open(file_to, O_WRONLY | O_TRUNC | O_CREAT | O_APPEND, 0700);
 	if (fd_to < 0)
 		cp_exit(fd_from, fd_to, 99, file_to);
