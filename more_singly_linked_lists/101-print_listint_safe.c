@@ -9,7 +9,7 @@
 
 size_t print_listint_safe(const listint_t *head)
 {
-	listint_t *temp = head;
+	const listint_t *temp = head;
 	size_t count = 0;
 
 	if (head == NULL)
@@ -17,7 +17,7 @@ size_t print_listint_safe(const listint_t *head)
 	while (temp != NULL)
 	{
 		count++;
-		printf("%p %d\n", &temp, temp->n);
+		printf("%p %d\n", (void *)&temp, temp->n);
 		temp = temp->next;
 	}
 	return (count);
