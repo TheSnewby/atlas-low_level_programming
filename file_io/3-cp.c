@@ -1,5 +1,35 @@
 #include "main.h"
 
+int _exit(int fd_from, int fd_to, int error_message)
+{
+	int close_return;
+
+	/* practice with switches? */
+	if (error_message == 97)
+		dprint ...
+	else if (error_message == 98)
+		dprint ...
+	else if (error_message == 99)
+		dprint ...
+	else
+		dprint ...
+
+	close_return = (fd_from);
+	if (close_return < 0)
+	{
+		close(fd_to);
+		dprintf(2, "Error: Can't close fd %d\n", fd_from);
+		exit(100);
+	}
+	close_return = (fd_to);
+	if (close_return < 0)
+	{
+		close(fd_to);
+		dprintf(2, "Error: Can't close fd %d\n", fd_from);
+		exit(100);
+	}
+}
+
 /**
  * main - copies the content of a file to another file
  * @argc: number of arguments
@@ -57,7 +87,7 @@ int main(int argc, char *argv[])
 			exit(98);
 		}
 		write_return = write(fd_to, buf, read_return);
-		if (write_return < 0)
+		if (write_return < 0 || write_return != read_return)
 		{
 			close(fd_from);
 			close(fd_to);
