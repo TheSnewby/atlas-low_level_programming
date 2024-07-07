@@ -13,7 +13,7 @@ listint_t *reverse_listint(listint_t **head)
 	listint_t *temp = *head;
 
 	if (head == NULL || *head == NULL)
-		return (-1);
+		return (*head);
 
 	/* deal with first node */
 	temp = (*head)->next;
