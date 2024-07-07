@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 		dprintf(2, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
-	fd_to = open(file_to, O_WRONLY | O_TRUNC | O_CREAT | O_APPEND);
+	fd_to = open(file_to, O_WRONLY | O_TRUNC | O_CREAT | O_APPEND, 0700);
 	if (fd_to < 0)
 	{
 		close(fd_from);
