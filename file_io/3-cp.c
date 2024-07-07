@@ -16,31 +16,37 @@ void cp_exit(int fd_from, int fd_to, int error_no, char *name)
 
 	if (error_no == 97)
 	{
-		dprintf(2, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	else if (error_no == 98)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", name);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", name);
 		if (fd_to == 0)
 			exit(98);
 	}
 	else if (error_no == 99)
-		dprintf(2, "Error: Can't write to %s\n", name);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", name);
 
-	close_return = (fd_from);
-	if (close_return < 0)
+	if (fd_from >= 0)
 	{
-		close(fd_to);
-		dprintf(2, "Error: Can't close fd %d\n", fd_from);
-		exit(100);
+		close_return = (fd_from);
+		if (close_return < 0)
+		{
+			close(fd_to);
+			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from);
+			exit(100);
+		}
 	}
-	close_return = (fd_to);
-	if (close_return < 0)
+	if (fd_to >= 0)
 	{
-		close(fd_to);
-		dprintf(2, "Error: Can't close fd %d\n", fd_from);
-		exit(100);
+		close_return = (fd_to);
+		if (close_return < 0)
+		{
+			close(fd_to);
+			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from);
+			exit(100);
+		}
 	}
 
 	if (error_no == 98)
