@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 	fd_from = open(file_from, O_RDONLY);
 	if (fd_from < 0)
 		cp_exit(fd_from, 0, 98, file_from);
-	fd_to = open(file_to, O_WRONLY | O_TRUNC | O_CREAT | O_APPEND, 0666);
+	fd_to = open(file_to, O_WRONLY | O_TRUNC | O_CREAT | O_APPEND, 0664);
 	if (fd_to < 0)
 		cp_exit(fd_from, fd_to, 99, file_to);
 
