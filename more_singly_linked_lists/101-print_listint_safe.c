@@ -17,7 +17,7 @@ size_t print_listint_safe(const listint_t *head)
 	while (temp != NULL)
 	{
 		count++;
-		printf("%p %d\n", (void *)temp, temp->n);
+		printf("[%p] %d\n", (void *)temp, temp->n);
 		temp = temp->next;
 	}
 	return (count);
@@ -38,7 +38,7 @@ int main(void)
     add_nodeint(&head2, 402);
     add_nodeint(&head2, 1024);
     print_listint_safe(head2);
-    /*head = NULL;
+    head = NULL;
     node = add_nodeint(&head, 0);
     add_nodeint(&head, 1);
     add_nodeint(&head, 2);
@@ -47,6 +47,6 @@ int main(void)
     node->next = add_nodeint(&head, 98);
     add_nodeint(&head, 402);
     add_nodeint(&head, 1024);
-    print_listint_safe(head); */
+    print_listint_safe(head);
     return (0);
 }
