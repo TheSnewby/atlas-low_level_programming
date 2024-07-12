@@ -33,7 +33,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		ht->array[index] = new_node;
 	else /* if collision */
 	{
-		if (key != ht->array[index]->key)
+		if (strcmp(key, ht->array[index]->key))
 		{
 			new_node->next = ht->array[index];
 			ht->array[index] = new_node;
