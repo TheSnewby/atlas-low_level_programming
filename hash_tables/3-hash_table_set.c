@@ -33,8 +33,16 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		ht->array[index] = new_node;
 	else /* if collision */
 	{
-		new_node->next = ht->array[index];
-		ht->array[index] = new_node;
+		if (key != ht->array[index]->key)
+		{
+			new_node->next = ht->array[index];
+			ht->array[index] = new_node;
+		}
+		else /* overwrites existing key-values */
+		{
+			new_node->next = ht->array[index]->next;
+			ht->array[index] = new_node;
+		}
 	}
 	return (1);
 }
