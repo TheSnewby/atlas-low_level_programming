@@ -13,6 +13,8 @@ int binary_search(int *array, size_t size, int value)
 {
 	size_t L = 0, R = size - 1, M;
 
+	if (array == NULL)
+		return (-1);
 	while (L <= R)
 	{
 		print_Array(array, L, R);
@@ -31,7 +33,7 @@ int binary_search(int *array, size_t size, int value)
  * print_Array - prints integer array in specific format
  * @array: array of integers
  * @L: starting index to be printed
- * @H: ending index to be printed
+ * @R: ending index to be printed
  */
 void print_Array(int *array, size_t L, size_t R)
 {
