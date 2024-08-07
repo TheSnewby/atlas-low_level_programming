@@ -15,6 +15,7 @@ int binary_search(int *array, size_t size, int value)
 
 	while (L <= R)
 	{
+		print_Array(array, L, R);
 		M = (L + R) / 2;
 		if (array[M] < value)
 			L = M + 1;
@@ -24,4 +25,23 @@ int binary_search(int *array, size_t size, int value)
 			return (M);
 	}
 	return (-1);
+}
+
+/**
+ * print_Array - prints integer array in specific format
+ * @array: array of integers
+ * @L: starting index to be printed
+ * @H: ending index to be printed
+ */
+void print_Array(int *array, size_t L, size_t R)
+{
+	size_t i;
+
+	for (i = L; i <= R; i++)
+	{
+		if (i != L)
+			printf(", ");
+		printf("%d", array[i]);
+	}
+	printf("\n");
 }

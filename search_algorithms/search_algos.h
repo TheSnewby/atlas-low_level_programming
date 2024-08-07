@@ -6,4 +6,5 @@
 
 int linear_search(int *, size_t, int);
 int binary_search(int *, size_t, int);
+void print_Array(int *, size_t, size_t);
 #endif
