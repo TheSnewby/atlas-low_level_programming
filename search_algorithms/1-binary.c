@@ -37,6 +37,7 @@ void print_Array(int *array, size_t L, size_t R)
 {
 	size_t i;
 
+	printf("Searching in array: ");
 	for (i = L; i <= R; i++)
 	{
 		if (i != L)
