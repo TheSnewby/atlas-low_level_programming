@@ -57,8 +57,14 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	new_node->key = strdup(key);
 	new_node->next = NULL;
 	new_node->value = strdup(value);
-	if (new_node->key == NULL || new_node->value == NULL)
+	if (new_node->key == NULL)
 	{
+		free(new_node);
+		return (0);
+	}
+	if (new_node->value == NULL)
+	{
+		free(new_node->key);
 		free(new_node);
 		return (0);
 	}
@@ -119,7 +125,9 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 				break;
 			}
 			 /* if somewhere in the middle */
-			else if (strcmp(new_node->key, temp->key) > 0 && strcmp(new_node->key, temp->snext->key) < 0)
+			else if (temp->key != NULL && temp->snext != NULL &&
+			temp->snext->key != NULL && strcmp(new_node->key, temp->key)
+			> 0 && strcmp(new_node->key, temp->snext->key) < 0)
 			{
 				new_node->snext = temp->snext;
 				temp->snext->sprev = new_node;
@@ -269,17 +277,17 @@ void shash_table_print_legacy(const shash_table_t *ht)
 	printf("}\n");
 }
 */
-/*
+
 int main(void)
 {
     shash_table_t *ht;
 
     ht = shash_table_create(1024);
-    shash_table_set(ht, "y", "0");
+    shash_table_set(ht, "Holberton", "is cool");
     shash_table_print(ht);
-    shash_table_set(ht, "j", "1");
+    shash_table_set(ht, "Holberton", "is soooo cooool");
     shash_table_print(ht);
-    shash_table_set(ht, "c", "2");
+    shash_table_set(ht, "Holberton", "is awesome");
     shash_table_print(ht);
     shash_table_set(ht, "b", "3");
     shash_table_print(ht);
@@ -295,4 +303,3 @@ int main(void)
     shash_table_delete(ht);
     return (EXIT_SUCCESS);
 }
-*/
