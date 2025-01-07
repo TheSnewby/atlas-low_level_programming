@@ -1,0 +1,10 @@
+CC = gcc
+SRC = *.c
+
+all: school
+
+school: $(SRC)
+	$(CC) $^ -o $@ 
+
+clean:
+	rm -f school
