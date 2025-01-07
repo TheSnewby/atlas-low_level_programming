@@ -1,19 +1,17 @@
 CC = gcc
 SRC = school.c main.c
-# OBJ = %.o
+OBJ = $(SRC:.c=.o)
 NAME = school
 
 all: $(NAME)
 
-# $(NAME): $(OBJ)
-# 	$(CC) $(OBJ) -o $(NAME)
-$(NAME): $(SRC:.c=.o)
-	$(CC) $^ -o $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+# $(NAME): $(SRC:.c=.o)
+# 	$(CC) $^ -o $(NAME)
 
 %.o: %.c
 	$(CC) -c $< -o $@
 
 clean:
-	rm -f school
-	rm -f main.o
-	rm -f school.o
+	rm -f $(NAME) $(OBJ)
