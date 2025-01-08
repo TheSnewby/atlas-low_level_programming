@@ -6,22 +6,21 @@ RM = rm
 
 all: $(NAME)
 
-school: $(OBJ)
+$(NAME): $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
 %.o: %.c
 	$(CC) -c $< -o $@
 
 clean:
-	$(RM) -f $(NAME)
+	$(RM) -f *~ $(NAME)
 
 oclean:
 	$(RM) -f $(OBJ)
 
-fclean:
-	$(RM) -f $(NAME) $(OBJ)
+fclean: clean oclean
 
 .PHONY: re clean oclean fclean
 
-re: fclean
-	$(MAKE) -f $(MAKEFILE_LIST) all
+re: fclean all
+
