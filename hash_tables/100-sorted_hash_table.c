@@ -16,8 +16,8 @@ shash_table_t *shash_table_create(unsigned long int size)
 	if (new_ht == NULL)
 		return (NULL);
 
-	new_ht->array = NULL;
 	new_ht->size = size;
+	new_ht->array = NULL;
 	new_ht->shead = NULL;
 	new_ht->stail = NULL;
 
@@ -45,40 +45,108 @@ shash_table_t *shash_table_create(unsigned long int size)
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
-	shash_node_t *new_node = NULL;
-	shash_node_t *temp = NULL;
+	shash_node_t *new_node = NULL, *temp = NULL, *prev = NULL;
 
-	if (ht == NULL || key == NULL)
+	if (!ht || !key || !value)
 		return (0);
+
 	index = hash_djb2((const unsigned char *)key) % ht->size;
+	temp = ht->array[index];
+
+	if (!temp)  /* Insert new node at array index */
+	{
+		new_node = (shash_node_t *)malloc(sizeof(shash_node_t));
+		new_node->key = strdup(key);
+		new_node->value = strdup(value);
+		new_node->next = NULL;
+		ht->array[index] = new_node;
+		//then insert in sorted list?
+	}
+
+	while (temp) /* If there's already a list at array index */
+	{
+		if (strcmp(key, temp->key) == 0)  /* if same key, overwrite current */
+		{
+			free(temp->value);
+			temp->value = strdup(value);
+			return (1);
+		}
+		else /* iterate until list end */
+		{
+			prev = temp;
+			temp = temp->next;
+
+			if (!temp)
+			{
+				new_node = (shash_node_t *)malloc(sizeof(shash_node_t));
+				new_node->key = strdup(key);
+				new_node->value = strdup(value);
+				new_node->next = NULL;
+				prev->next = new_node;
+			}
+		}
+	}
+
+	/* Insert in Sorted List */
+	if (!ht->shead) /* if brand new list */
+	{
+		ht->shead = new_node;
+		ht->stail = new_node;
+		new_node->sprev = NULL;
+		new_node->snext = NULL;
+	}
+	else /* iterate through */
+	{
+		temp = ht->shead;
+		prev = temp->sprev;
+		while (temp)
+		{
+			//check if shead,
+			//check if stail
+			//check if middle?
+			//KEY OR VALUE SORTED?
+
+			if (new_node->value <= temp->value)
+			{
+				//insert at head
+				ht->shead->sprev = new_node;
+				ht->shead = new_node;
+				
+				break;
+			}
+			else if (new)
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	new_node = malloc(sizeof(shash_node_t));
 	if (new_node == NULL)
 		return (0);
 	new_node->key = strdup(key);
 	new_node->next = NULL;
 	new_node->value = strdup(value);
-	if (new_node->key == NULL)
-	{
-		free(new_node);
-		return (0);
-	}
-	if (new_node->value == NULL)
-	{
-		free(new_node->key);
-		free(new_node);
-		return (0);
-	}
 
-	/* INSERT IN REGULAR ARRAY  */
-	/* no nodes at index */
-	if (ht->array[index] == NULL) 
+	/* INSERT IN HASH TABLE ARRAY */
+	if (ht->array[index] == NULL) /* no nodes at index */
 	{
 		ht->array[index] = new_node;
 		ht->array[index]->next = NULL;
 	}
 	else /* collision */
 	{	/* if same key, insert at head */
-		if (strcmp(key, ht->array[index]->key) != 0)
+		if (strcmp(key, ht->array[index]->key) != 0) /*BREAKS HERE*/
 		{
 			new_node->next = ht->array[index];
 			ht->array[index] = new_node;
@@ -94,7 +162,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		}
 	}
 
-	/* INSERT IN KEY-SORTED ARRAY */
+	/* INSERT IN KEY-SORTED DOUBLY LINKED LIST */
 	/* if sorted list is empty */
 	if (ht->shead == NULL)
 	{
@@ -250,14 +318,14 @@ void shash_table_delete(shash_table_t *ht)
 
 /**
  * regular printer to see what's being saved
- *
+ */
 void shash_table_print_legacy(const shash_table_t *ht)
 {
-	//printf("debug: you are here 3\n");
 	shash_node_t *temp = NULL;
 	unsigned long int i;
 	int print_count = 0;
 
+	printf("debug: you are here 3\n");
 	if (ht == NULL)
 		exit(0);
 
@@ -303,4 +371,3 @@ int main(void)
     shash_table_delete(ht);
     return (EXIT_SUCCESS);
 }
-*/

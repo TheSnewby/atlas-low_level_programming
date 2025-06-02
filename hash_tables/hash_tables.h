@@ -32,6 +32,8 @@ typedef struct hash_table_s
 	unsigned long int size;
 	hash_node_t **array;
 } hash_table_t;
+
+
 /**
  * struct shash_node_s - Node of a sorted hash table
  *
