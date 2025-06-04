@@ -70,31 +70,14 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 			temp->value = strdup(value);
 			return (1);
 		}
-
-		new_node = (shash_node_t *)malloc(sizeof(shash_node_t));
-		new_node->key = strdup(key);
-		new_node->value = strdup(value);
-		if (strcmp(key, temp->key) < 0) /* at beginning */
-		{
-			new_node->next = ht->array[index];
-			ht->array[index] = new_node;
-			break;
-		}
-		else if (!temp->next) /* at end */
-		{
-			new_node->next = NULL;
-			temp->next = new_node;
-			break;
-		}
-		else if (strcmp(key, temp->key) > 0 && /* between others */
-		strcmp(key, temp->next->key) < 0)
-		{
-			new_node->next = temp->next;
-			temp->next = new_node;
-			break;
-		}
 		temp = temp->next;
 	}
+
+	new_node = (shash_node_t *)malloc(sizeof(shash_node_t));
+	new_node->key = strdup(key);
+	new_node->value = strdup(value);
+	new_node->next = ht->array[index];
+	ht->array[index] = new_node;
 
 	/* Insert in Key-Sorted List */
 	if (ht->shead == NULL)
