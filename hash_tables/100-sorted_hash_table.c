@@ -61,24 +61,25 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		new_node->next = NULL;
 		ht->array[index] = new_node;
 	}
-
-	while (temp) /* If there's already a list at array index */
+	else
 	{
-		if (strcmp(key, temp->key) == 0)  /* if same key, overwrite current */
+		while (temp) /* If there's already a list at array index */
 		{
-			free(temp->value);
-			temp->value = strdup(value);
-			return (1);
+			if (strcmp(key, temp->key) == 0)  /* if same key, overwrite current */
+			{
+				free(temp->value);
+				temp->value = strdup(value);
+				return (1);
+			}
+			temp = temp->next;
 		}
-		temp = temp->next;
+
+		new_node = (shash_node_t *)malloc(sizeof(shash_node_t));
+		new_node->key = strdup(key);
+		new_node->value = strdup(value);
+		new_node->next = ht->array[index];
+		ht->array[index] = new_node;
 	}
-
-	new_node = (shash_node_t *)malloc(sizeof(shash_node_t));
-	new_node->key = strdup(key);
-	new_node->value = strdup(value);
-	new_node->next = ht->array[index];
-	ht->array[index] = new_node;
-
 	/* Insert in Key-Sorted List */
 	if (ht->shead == NULL)
 	{
