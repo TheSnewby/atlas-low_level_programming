@@ -35,6 +35,55 @@ shash_table_t *shash_table_create(unsigned long int size)
 }
 
 /**
+ * shash_sort_insert - inserts node into sorted list
+ * @ht: hash table
+ * @new_node: node to be inserted
+ */
+void shash_sort_insert(shash_table_t *ht, shash_node_t *new_node)
+{
+	shash_node_t *temp = NULL;
+
+	if (ht->shead == NULL)
+	{
+		ht->shead = new_node;
+		ht->stail = new_node;
+		new_node->snext = NULL;
+		new_node->sprev = NULL;
+		return;
+	}
+	temp = ht->shead;
+	while (temp != NULL)
+	{	/* check first node */
+		if (strcmp(new_node->key, ht->shead->key) < 0)
+		{
+			new_node->sprev = NULL;
+			temp->sprev = new_node;
+			new_node->snext = temp;
+			ht->shead = new_node;
+			break;
+		}	/* if insert at end */
+		else if (temp->snext == NULL)
+		{
+			temp->snext = new_node;
+			new_node->sprev = temp;
+			new_node->snext = NULL;
+			ht->stail = new_node;
+			break;
+		}	/* in the middle */
+		else if (temp->snext != NULL && strcmp(new_node->key, temp->key)
+		> 0 && strcmp(new_node->key, temp->snext->key) < 0)
+		{
+			new_node->snext = temp->snext;
+			temp->snext->sprev = new_node;
+			temp->snext = new_node;
+			new_node->sprev = temp;
+			break;
+		}
+		temp = temp->snext;
+	}
+}
+
+/**
  * shash_table_set - populates the table with a new node
  * @ht: hash table
  * @key: key for new node
@@ -52,7 +101,6 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 
 	index = hash_djb2((const unsigned char *)key) % ht->size;
 	temp = ht->array[index];
-
 	if (!temp)  /* Insert new node at array index */
 	{
 		new_node = (shash_node_t *)malloc(sizeof(shash_node_t));
@@ -80,55 +128,12 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		new_node->next = ht->array[index];
 		ht->array[index] = new_node;
 	}
-	/* Insert in Key-Sorted List */
-	if (ht->shead == NULL)
-	{
-		ht->shead = new_node;
-		ht->stail = new_node;
-		new_node->snext = NULL;
-		new_node->sprev = NULL;
-	}
-	else /* sorted list not empty */
-	{
-		temp = ht->shead;
-		while (temp != NULL)
-		{	/* check first node */
-			if (strcmp(new_node->key, ht->shead->key) < 0)
-			{
-				new_node->sprev = NULL;
-				temp->sprev = new_node;
-				new_node->snext = temp;
-				ht->shead = new_node;
-				break;
-			} 	/* if insert at end */
-			else if (temp->snext == NULL)
-			{
-				temp->snext = new_node;
-				new_node->sprev = temp;
-				new_node->snext = NULL;
-				ht->stail = new_node;
-				break;
-			}
-			 /* if somewhere in the middle */
-			else if (temp->key != NULL && temp->snext != NULL &&
-			temp->snext->key != NULL && strcmp(new_node->key, temp->key)
-			> 0 && strcmp(new_node->key, temp->snext->key) < 0)
-			{
-				new_node->snext = temp->snext;
-				temp->snext->sprev = new_node;
-				temp->snext = new_node;
-				new_node->sprev = temp;
-				break;
-			}
-
-			temp = temp->snext;
-		}
-	}
+	shash_sort_insert(ht, new_node);
 	return (1);
 }
 
 /**
- * hash_table_get - retrieves a value associated with a key
+ * shash_table_get - retrieves a value associated with a key
  * @ht: hash table
  * @key: key for value
  *
@@ -213,7 +218,6 @@ void shash_table_print_rev(const shash_table_t *ht)
  *
  * Return: void
  */
-
 void shash_table_delete(shash_table_t *ht)
 {
 	shash_node_t *temp = NULL;
@@ -232,62 +236,3 @@ void shash_table_delete(shash_table_t *ht)
 	free(ht->array);
 	free(ht);
 }
-
-/**
- * regular printer to see what's being saved
- */
-/*
-void shash_table_print_legacy(const shash_table_t *ht)
-{
-	shash_node_t *temp = NULL;
-	unsigned long int i;
-	int print_count;
-
-	if (ht == NULL)
-		exit(0);
-
-	for (i = 0; i < ht->size; i++)
-	{
-		temp = ht->array[i];
-		printf("[%ld]: ", i);
-		print_count = 0;
-		while (temp != NULL)
-		{
-			if (print_count > 0)
-				printf(", ");
-			printf("'%s': '%s'", temp->key, temp->value);
-			print_count++;
-			temp = temp->next;
-		}
-		printf("\n");
-	}
-}
-
-
-int main(void)
-{
-    shash_table_t *ht;
-
-    ht = shash_table_create(5);
-    shash_table_set(ht, "Canada", "Ottowa");
-    shash_table_print(ht);
-    shash_table_set(ht, "Australia", "Canberra");
-    shash_table_print(ht);
-    shash_table_set(ht, "Holberton", "is awesome");
-    shash_table_print(ht);
-    shash_table_set(ht, "b", "3");
-    shash_table_print(ht);
-    shash_table_set(ht, "z", "4");
-    shash_table_print(ht);
-    shash_table_set(ht, "n", "5");
-    shash_table_print(ht);
-    shash_table_set(ht, "a", "6");
-    shash_table_print(ht);
-    shash_table_set(ht, "m", "7");
-    // shash_table_print(ht);
-    // shash_table_print_rev(ht);
-	shash_table_print_legacy(ht);
-    shash_table_delete(ht);
-    return (EXIT_SUCCESS);
-}
-*/
