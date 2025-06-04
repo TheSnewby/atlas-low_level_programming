@@ -60,7 +60,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		new_node->value = strdup(value);
 		new_node->next = NULL;
 		ht->array[index] = new_node;
-		//then insert in sorted list?
+		/* then insert in sorted list? */
 	}
 
 	while (temp) /* If there's already a list at array index */
@@ -88,82 +88,6 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	}
 
 	/* Insert in Sorted List */
-	if (!ht->shead) /* if brand new list */
-	{
-		ht->shead = new_node;
-		ht->stail = new_node;
-		new_node->sprev = NULL;
-		new_node->snext = NULL;
-	}
-	else /* iterate through */
-	{
-		temp = ht->shead;
-		prev = temp->sprev;
-		while (temp)
-		{
-			//check if shead,
-			//check if stail
-			//check if middle?
-			//KEY OR VALUE SORTED?
-
-			if (new_node->value <= temp->value)
-			{
-				//insert at head
-				ht->shead->sprev = new_node;
-				ht->shead = new_node;
-				
-				break;
-			}
-			else if (new)
-		}
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	new_node = malloc(sizeof(shash_node_t));
-	if (new_node == NULL)
-		return (0);
-	new_node->key = strdup(key);
-	new_node->next = NULL;
-	new_node->value = strdup(value);
-
-	/* INSERT IN HASH TABLE ARRAY */
-	if (ht->array[index] == NULL) /* no nodes at index */
-	{
-		ht->array[index] = new_node;
-		ht->array[index]->next = NULL;
-	}
-	else /* collision */
-	{	/* if same key, insert at head */
-		if (strcmp(key, ht->array[index]->key) != 0) /*BREAKS HERE*/
-		{
-			new_node->next = ht->array[index];
-			ht->array[index] = new_node;
-		}
-		else /*overwrite existing values */
-		{
-			temp = ht->array[index];
-			free(temp->key);
-			free(temp->value);
-			new_node->next = temp->next;
-			ht->array[index] = new_node;
-			free(temp);
-		}
-	}
-
-	/* INSERT IN KEY-SORTED DOUBLY LINKED LIST */
-	/* if sorted list is empty */
 	if (ht->shead == NULL)
 	{
 		ht->shead = new_node;
@@ -283,7 +207,7 @@ void shash_table_print_rev(const shash_table_t *ht)
 	{
 		if (print_count > 0)
 			printf(", ");
-		printf("'%s: '%s'", temp->key, temp->value);
+		printf("'%s': '%s'", temp->key, temp->value);
 		print_count++;
 		temp = temp->sprev;
 	}
@@ -319,6 +243,7 @@ void shash_table_delete(shash_table_t *ht)
 /**
  * regular printer to see what's being saved
  */
+/*
 void shash_table_print_legacy(const shash_table_t *ht)
 {
 	shash_node_t *temp = NULL;
@@ -371,3 +296,4 @@ int main(void)
     shash_table_delete(ht);
     return (EXIT_SUCCESS);
 }
+*/
