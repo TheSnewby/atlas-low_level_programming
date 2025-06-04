@@ -45,7 +45,7 @@ shash_table_t *shash_table_create(unsigned long int size)
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
-	shash_node_t *new_node = NULL, *temp = NULL, *prev = NULL;
+	shash_node_t *new_node = NULL, *temp = NULL;
 
 	if (!ht || !key || !value)
 		return (0);
@@ -60,7 +60,6 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		new_node->value = strdup(value);
 		new_node->next = NULL;
 		ht->array[index] = new_node;
-		/* then insert in sorted list? */
 	}
 
 	while (temp) /* If there's already a list at array index */
@@ -71,20 +70,30 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 			temp->value = strdup(value);
 			return (1);
 		}
-		else /* iterate until list end */
-		{
-			prev = temp;
-			temp = temp->next;
 
-			if (!temp)
-			{
-				new_node = (shash_node_t *)malloc(sizeof(shash_node_t));
-				new_node->key = strdup(key);
-				new_node->value = strdup(value);
-				new_node->next = NULL;
-				prev->next = new_node;
-			}
+		new_node = (shash_node_t *)malloc(sizeof(shash_node_t));
+		new_node->key = strdup(key);
+		new_node->value = strdup(value);
+		if (strcmp(key, temp->key) < 0) /* at beginning */
+		{
+			new_node->next = ht->array[index];
+			ht->array[index] = new_node;
+			break;
 		}
+		else if (!temp->next) /* at end */
+		{
+			new_node->next = NULL;
+			temp->next = new_node;
+			break;
+		}
+		else if (strcmp(key, temp->key) > 0 && /* between others */
+		strcmp(key, temp->next->key) < 0)
+		{
+			new_node->next = temp->next;
+			temp->next = new_node;
+			break;
+		}
+		temp = temp->next;
 	}
 
 	/* Insert in Key-Sorted List */
@@ -248,16 +257,16 @@ void shash_table_print_legacy(const shash_table_t *ht)
 {
 	shash_node_t *temp = NULL;
 	unsigned long int i;
-	int print_count = 0;
+	int print_count;
 
-	printf("debug: you are here 3\n");
 	if (ht == NULL)
 		exit(0);
 
-	printf("{");
 	for (i = 0; i < ht->size; i++)
 	{
 		temp = ht->array[i];
+		printf("[%ld]: ", i);
+		print_count = 0;
 		while (temp != NULL)
 		{
 			if (print_count > 0)
@@ -266,8 +275,8 @@ void shash_table_print_legacy(const shash_table_t *ht)
 			print_count++;
 			temp = temp->next;
 		}
+		printf("\n");
 	}
-	printf("}\n");
 }
 
 
@@ -275,10 +284,10 @@ int main(void)
 {
     shash_table_t *ht;
 
-    ht = shash_table_create(1024);
-    shash_table_set(ht, "Holberton", "is cool");
+    ht = shash_table_create(5);
+    shash_table_set(ht, "Canada", "Ottowa");
     shash_table_print(ht);
-    shash_table_set(ht, "Holberton", "is soooo cooool");
+    shash_table_set(ht, "Australia", "Canberra");
     shash_table_print(ht);
     shash_table_set(ht, "Holberton", "is awesome");
     shash_table_print(ht);
@@ -291,8 +300,9 @@ int main(void)
     shash_table_set(ht, "a", "6");
     shash_table_print(ht);
     shash_table_set(ht, "m", "7");
-    shash_table_print(ht);
-    shash_table_print_rev(ht);
+    // shash_table_print(ht);
+    // shash_table_print_rev(ht);
+	shash_table_print_legacy(ht);
     shash_table_delete(ht);
     return (EXIT_SUCCESS);
 }
