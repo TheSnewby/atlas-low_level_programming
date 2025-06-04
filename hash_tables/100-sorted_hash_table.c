@@ -87,7 +87,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		}
 	}
 
-	/* Insert in Sorted List */
+	/* Insert in Key-Sorted List */
 	if (ht->shead == NULL)
 	{
 		ht->shead = new_node;
@@ -100,7 +100,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		temp = ht->shead;
 		while (temp != NULL)
 		{	/* check first node */
-			if (strcmp(new_node->key, temp->key) < 0)
+			if (strcmp(new_node->value, ht->shead->value) < 0)
 			{
 				new_node->sprev = NULL;
 				temp->sprev = new_node;
