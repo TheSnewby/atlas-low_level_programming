@@ -173,7 +173,7 @@ void shash_table_print(const shash_table_t *ht)
 	{
 		if (print_count > 0)
 			printf(", ");
-		printf("'%s: '%s'", temp->key, temp->value);
+		printf("'%s': '%s'", temp->key, temp->value);
 		print_count++;
 		temp = temp->snext;
 	}
