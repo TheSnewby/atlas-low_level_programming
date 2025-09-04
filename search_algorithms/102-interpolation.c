@@ -18,6 +18,9 @@ int interpolation_search(int *array, size_t size, int value)
 
 	high = size - 1;
 
+	if (array[0] == value)
+		return (0);
+
 	while ((low != high) && (array[low] <= value) && (array[high] >= value))
 	{
 		needle = low + ((high - low) * (value - array[low]) /
