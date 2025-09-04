@@ -23,7 +23,7 @@ int interpolation_search(int *array, size_t size, int value)
 		needle = low + ((high - low) * (value - array[low]) /
 		(array[high] - array[low]));
 
-		if (array[needle] = value)
+		if (array[needle] == value)
 			return (needle);
 
 		if (value < array[needle])
