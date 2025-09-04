@@ -20,8 +20,7 @@ int interpolation_search(int *array, size_t size, int value)
 		return (0);
 
 	high = size - 1;
-	do
-	{
+	do {
 		needle = low + ((double)(high - low) * (value - array[low]) /
 		(array[high] - array[low]));
 
