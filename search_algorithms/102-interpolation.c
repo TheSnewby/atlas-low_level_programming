@@ -18,7 +18,6 @@ int interpolation_search(int *array, size_t size, int value)
 
 	high = size - 1;
 
-	printf("Value checked array[%d] = [%d]\n", needle, array[needle]);
 	if (array[0] == value)
 		return (0);
 
